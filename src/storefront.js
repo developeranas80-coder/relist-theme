@@ -1586,6 +1586,80 @@ export function initStorefront(storefrontApp) {
   }
 
   /* ============================================================
+     MEGA MENU CONTROLLER — Hover & Click Navigation
+     ============================================================ */
+  function initMegaMenu() {
+    const navItems = document.querySelectorAll('.nav-item-has-megamenu');
+    const megaOverlay = document.getElementById('mega-menu-overlay');
+    const megaPanels = document.querySelectorAll('.mega-menu-panel');
+    if (!megaOverlay || navItems.length === 0) return;
+
+    let closeTimer = null;
+
+    function openMegaPanel(targetId) {
+      if (closeTimer) clearTimeout(closeTimer);
+
+      megaPanels.forEach(panel => {
+        if (panel.id === `megamenu-panel-${targetId}`) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+
+      megaOverlay.classList.add('is-active');
+      storeHeader.classList.add('megamenu-open');
+    }
+
+    function closeMegaMenu() {
+      closeTimer = setTimeout(() => {
+        megaOverlay.classList.remove('is-active');
+        storeHeader.classList.remove('megamenu-open');
+      }, 150);
+    }
+
+    navItems.forEach(item => {
+      const targetId = item.dataset.megamenu;
+
+      item.addEventListener('mouseenter', () => {
+        openMegaPanel(targetId);
+      });
+
+      item.addEventListener('mouseleave', () => {
+        closeMegaMenu();
+      });
+    });
+
+    megaOverlay.addEventListener('mouseenter', () => {
+      if (closeTimer) clearTimeout(closeTimer);
+    });
+
+    megaOverlay.addEventListener('mouseleave', () => {
+      closeMegaMenu();
+    });
+
+    // Handle all links inside mega menu
+    const megaLinks = megaOverlay.querySelectorAll('a[data-link], .mega-promo-card[data-link]');
+    megaLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const slug = link.dataset.link;
+        megaOverlay.classList.remove('is-active');
+        storeHeader.classList.remove('megamenu-open');
+        showCollection(slug);
+      });
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        megaOverlay.classList.remove('is-active');
+        storeHeader.classList.remove('megamenu-open');
+      }
+    });
+  }
+
+  /* ============================================================
      INIT — Render all homepage content
      ============================================================ */
   renderCart();
@@ -1593,6 +1667,7 @@ export function initStorefront(storefrontApp) {
   initSliderArrows();
   initHeroSlider();
   initLookbookInteractions();
+  initMegaMenu();
 
   return {
     updateProductCardStyle,

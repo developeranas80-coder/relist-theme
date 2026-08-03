@@ -222,7 +222,7 @@
       FREE SHIPPING ON ORDERS OVER PKR 3000
     </div>
 
-    <!-- ===== HEADER (Relist exact layout) ===== -->
+    <!-- ===== HEADER (Relist exact layout with Mega Menu) ===== -->
     <header class="store-header transparent" id="store-header-element">
       <div class="header-left-group">
         <button class="header-icon hamburger-trigger" id="menu-drawer-trigger-btn" aria-label="Menu">
@@ -230,10 +230,25 @@
             <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
-        <nav class="store-nav-links">
-          <a href="#" class="nav-link-top" data-link="all" data-gender="MEN">MEN</a>
-          <a href="#" class="nav-link-top active" data-link="all" data-gender="WOMEN">WOMEN</a>
-          <a href="#" class="nav-link-top" data-link="all">JUNIORS</a>
+        <nav class="store-nav-links" id="store-main-nav">
+          <div class="nav-item-has-megamenu" data-megamenu="women">
+            <a href="#" class="nav-link-top active" data-link="all" data-gender="WOMEN">WOMEN</a>
+          </div>
+          <div class="nav-item-has-megamenu" data-megamenu="men">
+            <a href="#" class="nav-link-top" data-link="all" data-gender="MEN">MEN</a>
+          </div>
+          <div class="nav-item-has-megamenu" data-megamenu="new">
+            <a href="#" class="nav-link-top" data-link="all">NEW ARRIVALS</a>
+          </div>
+          <div class="nav-item-has-megamenu" data-megamenu="collections">
+            <a href="#" class="nav-link-top" data-link="all">COLLECTIONS</a>
+          </div>
+          <div class="nav-item">
+            <a href="#" class="nav-link-top" data-link="dresses">EDITORIAL</a>
+          </div>
+          <div class="nav-item-has-megamenu" data-megamenu="sale">
+            <a href="#" class="nav-link-top nav-link-sale" data-link="all">SALE</a>
+          </div>
         </nav>
       </div>
 
@@ -264,6 +279,180 @@
           </svg>
           <span class="cart-badge" id="cart-badge-count">0</span>
         </button>
+      </div>
+
+      <!-- ===== MEGA MENU DROPDOWN PANEL ===== -->
+      <div class="mega-menu-overlay" id="mega-menu-overlay">
+        <div class="mega-menu-inner">
+          
+          <!-- PANEL 1: WOMEN -->
+          <div class="mega-menu-panel active" id="megamenu-panel-women">
+            <div class="mega-menu-grid">
+              <div class="mega-col">
+                <h4 class="mega-col-title">CATEGORIES</h4>
+                <ul class="mega-col-list">
+                  <li><a href="#" data-link="all" class="mega-link highlight">All Women's <span class="mega-badge">NEW</span></a></li>
+                  <li><a href="#" data-link="t-shirts" class="mega-link">T-Shirts & Tops</a></li>
+                  <li><a href="#" data-link="shirts" class="mega-link">Shirts & Blouses</a></li>
+                  <li><a href="#" data-link="dresses" class="mega-link">Dresses & Jumpsuits</a></li>
+                  <li><a href="#" data-link="denim" class="mega-link">Coats & Outerwear</a></li>
+                  <li><a href="#" data-link="skirts" class="mega-link">Skirts & Shorts</a></li>
+                  <li><a href="#" data-link="all" class="mega-link">Trousers & Shorts</a></li>
+                </ul>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-col-title">FEATURED EDITS</h4>
+                <ul class="mega-col-list">
+                  <li><a href="#" data-link="all" class="mega-link">Autumn/Winter '26 Capsule</a></li>
+                  <li><a href="#" data-link="dresses" class="mega-link">Silk & Linen Edit</a></li>
+                  <li><a href="#" data-link="denim" class="mega-link">Minimalist Tailoring</a></li>
+                  <li><a href="#" data-link="t-shirts" class="mega-link">Monochrome Streetwear</a></li>
+                  <li><a href="#" data-link="all" class="mega-link">Cashmere Essentials</a></li>
+                </ul>
+              </div>
+
+              <div class="mega-col">
+                <h4 class="mega-col-title">ACCESSORIES</h4>
+                <ul class="mega-col-list">
+                  <li><a href="#" data-link="all" class="mega-link">Leather Tote Bags</a></li>
+                  <li><a href="#" data-link="all" class="mega-link">Ankle Boots & Heels</a></li>
+                  <li><a href="#" data-link="all" class="mega-link">Designer Eyewear</a></li>
+                  <li><a href="#" data-link="all" class="mega-link">Minimalist Jewelry</a></li>
+                  <li><a href="#" data-link="all" class="mega-link">Belts & Leather Goods</a></li>
+                </ul>
+              </div>
+
+              <div class="mega-col mega-col-promos">
+                <div class="mega-promo-card" data-link="dresses">
+                  <img src="/images/brown_dress.png" alt="Summer Slip Dresses" class="mega-promo-img">
+                  <div class="mega-promo-overlay">
+                    <span class="mega-promo-tag">JUST DROPPED</span>
+                    <h5 class="mega-promo-title">Silk & Linen Slip Dresses</h5>
+                    <span class="mega-promo-cta">Shop Collection &rarr;</span>
+                  </div>
+                </div>
+                <div class="mega-promo-card" data-link="denim">
+                  <img src="/images/charcoal_wool_coat.png" alt="Outerwear" class="mega-promo-img">
+                  <div class="mega-promo-overlay">
+                    <span class="mega-promo-tag">LIMITED DROP</span>
+                    <h5 class="mega-promo-title">Oversized Wool Coats</h5>
+                    <span class="mega-promo-cta">Explore Lookbook &rarr;</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 2: MEN -->
+          <div class="mega-menu-panel" id="megamenu-panel-men">
+            <div class="mega-menu-grid">
+              <div class="mega-col">
+                <h4 class="mega-col-title">MEN'S CATEGORIES</h4>
+                <ul class="mega-col-list">
+                  <li><a href="#" data-link="all" class="mega-link highlight">All Men's Apparel <span class="mega-badge">HOT</span></a></li>
+                  <li><a href="#" data-link="t-shirts" class="mega-link">Graphic & Oversized Tees</a></li>
+                  <li><a href="#" data-link="shirts" class="mega-link">Oxfords & Linen Shirts</a></li>
+                  <li><a href="#" data-link="denim" class="mega-link">Heavyweight Outerwear</a></li>
+                  <li><a href="#" data-link="all" class="mega-link">Relaxed Trousers</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4 class="mega-col-title">COLLECTIONS</h4>
+                <ul class="mega-col-list">
+                  <li><a href="#" data-link="t-shirts" class="mega-link">Urban Utility Capsule</a></li>
+                  <li><a href="#" data-link="denim" class="mega-link">Raw Denim & Layers</a></li>
+                  <li><a href="#" data-link="shirts" class="mega-link">Minimalist Tailoring</a></li>
+                </ul>
+              </div>
+              <div class="mega-col mega-col-promos" style="grid-column: span 2;">
+                <div class="mega-promo-card" data-link="t-shirts">
+                  <img src="/images/graphic_tshirt_green.png" alt="Men's Drop" class="mega-promo-img">
+                  <div class="mega-promo-overlay">
+                    <span class="mega-promo-tag">NEW DROP</span>
+                    <h5 class="mega-promo-title">Heavyweight Streetwear Tees</h5>
+                    <span class="mega-promo-cta">Shop Men's Drop &rarr;</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 3: NEW ARRIVALS -->
+          <div class="mega-menu-panel" id="megamenu-panel-new">
+            <div class="mega-menu-grid">
+              <div class="mega-col">
+                <h4 class="mega-col-title">NEW THIS WEEK</h4>
+                <ul class="mega-col-list">
+                  <li><a href="#" data-link="all" class="mega-link highlight">View All New Arrivals</a></li>
+                  <li><a href="#" data-link="t-shirts" class="mega-link">Latest T-Shirts & Tops</a></li>
+                  <li><a href="#" data-link="dresses" class="mega-link">New Season Dresses</a></li>
+                  <li><a href="#" data-link="denim" class="mega-link">Fresh Outerwear Drops</a></li>
+                </ul>
+              </div>
+              <div class="mega-col mega-col-promos" style="grid-column: span 3;">
+                <div class="mega-promo-card" data-link="all">
+                  <img src="/images/ivory_linen_dress.png" alt="New Season" class="mega-promo-img">
+                  <div class="mega-promo-overlay">
+                    <span class="mega-promo-tag">AUTUMN 2026</span>
+                    <h5 class="mega-promo-title">The Complete New Season Drop</h5>
+                    <span class="mega-promo-cta">Shop All New &rarr;</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 4: COLLECTIONS -->
+          <div class="mega-menu-panel" id="megamenu-panel-collections">
+            <div class="mega-menu-grid">
+              <div class="mega-col">
+                <h4 class="mega-col-title">ARCHIVE LOOKBOOKS</h4>
+                <ul class="mega-col-list">
+                  <li><a href="#" data-link="all" class="mega-link">Autumn / Winter '26</a></li>
+                  <li><a href="#" data-link="dresses" class="mega-link">Spring Resort Edit</a></li>
+                  <li><a href="#" data-link="denim" class="mega-link">Monochrome Studio</a></li>
+                </ul>
+              </div>
+              <div class="mega-col mega-col-promos" style="grid-column: span 3;">
+                <div class="mega-promo-card" data-link="all">
+                  <img src="/images/beige_cashmere_knit.png" alt="Cashmere Edit" class="mega-promo-img">
+                  <div class="mega-promo-overlay">
+                    <span class="mega-promo-tag">LUXURY KNITWEAR</span>
+                    <h5 class="mega-promo-title">100% Cashmere & Fine Wool</h5>
+                    <span class="mega-promo-cta">View Collection &rarr;</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 5: SALE -->
+          <div class="mega-menu-panel" id="megamenu-panel-sale">
+            <div class="mega-menu-grid">
+              <div class="mega-col">
+                <h4 class="mega-col-title" style="color: #e63946;">SALE ARCHIVE</h4>
+                <ul class="mega-col-list">
+                  <li><a href="#" data-link="all" class="mega-link highlight" style="color: #e63946;">Shop All Sale — Up to 40% Off</a></li>
+                  <li><a href="#" data-link="t-shirts" class="mega-link">T-Shirts on Sale</a></li>
+                  <li><a href="#" data-link="dresses" class="mega-link">Dresses on Sale</a></li>
+                  <li><a href="#" data-link="denim" class="mega-link">Outerwear Deals</a></li>
+                </ul>
+              </div>
+              <div class="mega-col mega-col-promos" style="grid-column: span 3;">
+                <div class="mega-promo-card" data-link="all">
+                  <img src="/images/black_silk_dress.png" alt="Sale" class="mega-promo-img">
+                  <div class="mega-promo-overlay">
+                    <span class="mega-promo-tag" style="background:#e63946; color:#fff; padding: 2px 6px; width: fit-content;">SPECIAL OFFER</span>
+                    <h5 class="mega-promo-title">End of Season Clearance</h5>
+                    <span class="mega-promo-cta">Shop Sale Now &rarr;</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </header>
 

@@ -42,6 +42,55 @@
       <span class="cart-badge" id="cart-badge-count">{{ cart.item_count }}</span>
     </a>
   </div>
+
+  <!-- ===== MEGA MENU DROPDOWN PANEL ===== -->
+  <div class="mega-menu-overlay" id="mega-menu-overlay">
+    <div class="mega-menu-inner">
+      <div class="mega-menu-panel active" id="megamenu-panel-women">
+        <div class="mega-menu-grid">
+          <div class="mega-col">
+            <h4 class="mega-col-title">CATEGORIES</h4>
+            <ul class="mega-col-list">
+              <li><a href="{{ routes.all_products_collection_url }}" class="mega-link highlight">All Women's <span class="mega-badge">NEW</span></a></li>
+              <li><a href="{{ routes.collections_url }}/t-shirts" class="mega-link">T-Shirts & Tops</a></li>
+              <li><a href="{{ routes.collections_url }}/shirts" class="mega-link">Shirts & Blouses</a></li>
+              <li><a href="{{ routes.collections_url }}/dresses" class="mega-link">Dresses & Jumpsuits</a></li>
+              <li><a href="{{ routes.collections_url }}/denim" class="mega-link">Coats & Outerwear</a></li>
+              <li><a href="{{ routes.collections_url }}/skirts" class="mega-link">Skirts & Shorts</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h4 class="mega-col-title">FEATURED EDITS</h4>
+            <ul class="mega-col-list">
+              <li><a href="{{ routes.all_products_collection_url }}" class="mega-link">Autumn/Winter '26 Capsule</a></li>
+              <li><a href="{{ routes.collections_url }}/dresses" class="mega-link">Silk & Linen Edit</a></li>
+              <li><a href="{{ routes.collections_url }}/denim" class="mega-link">Minimalist Tailoring</a></li>
+              <li><a href="{{ routes.collections_url }}/t-shirts" class="mega-link">Monochrome Streetwear</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h4 class="mega-col-title">ACCESSORIES</h4>
+            <ul class="mega-col-list">
+              <li><a href="{{ routes.all_products_collection_url }}" class="mega-link">Leather Tote Bags</a></li>
+              <li><a href="{{ routes.all_products_collection_url }}" class="mega-link">Ankle Boots & Heels</a></li>
+              <li><a href="{{ routes.all_products_collection_url }}" class="mega-link">Designer Eyewear</a></li>
+              <li><a href="{{ routes.all_products_collection_url }}" class="mega-link">Minimalist Jewelry</a></li>
+            </ul>
+          </div>
+          <div class="mega-col mega-col-promos">
+            <div class="mega-promo-card">
+              <img src="{{ 'brown_dress.png' | asset_url }}" alt="Slip Dresses" class="mega-promo-img">
+              <div class="mega-promo-overlay">
+                <span class="mega-promo-tag">JUST DROPPED</span>
+                <h5 class="mega-promo-title">Silk & Linen Slip Dresses</h5>
+                <span class="mega-promo-cta">Shop Collection &rarr;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
 
 <!-- Visual Hamburger Menu Drawer Overlay -->

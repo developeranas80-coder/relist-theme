@@ -1,0 +1,106 @@
+<section class="product-slider-section" id="section-{{ section.id }}">
+  <div class="slider-section-header">
+    {%- if section.settings.title != blank -%}
+      <h2 class="slider-section-title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    <div class="slider-nav-arrows">
+      <button class="slider-arrow slider-prev" data-slider="{{ section.id }}" aria-label="Previous">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="slider-arrow slider-next" data-slider="{{ section.id }}" aria-label="Next">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Best Sellers Tabs -->
+  <div class="best-sellers-tabs" id="best-sellers-tabs-{{ section.id }}">
+    {%- assign tab_count = 0 -%}
+    {%- for block in section.blocks -%}
+      {%- assign tab_collection = collections[block.settings.collection] -%}
+      {%- if tab_collection != blank -%}
+        <button class="bs-tab {% if tab_count == 0 %}active{% endif %}" data-bs-cat="{{ tab_collection.handle }}" data-section-id="{{ section.id }}">
+          {{ block.settings.tab_title | default: tab_collection.title | escape }}
+        </button>
+        {%- assign tab_count = tab_count | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <!-- Slider Tracks for each Tab -->
+  {%- assign tab_count = 0 -%}
+  {%- for block in section.blocks -%}
+    {%- assign tab_collection = collections[block.settings.collection] -%}
+    {%- if tab_collection != blank -%}
+      <div class="product-slider-track {% if tab_count == 0 %}active-track{% endif %}" 
+        id="slider-{{ section.id }}-{{ tab_collection.handle }}"
+        style="{% if tab_count > 0 %}display: none;{% else %}display: flex;{% endif %}">
+        
+        {%- for product in tab_collection.products limit: section.settings.products_to_show -%}
+          {%- render 'product-card', product: product -%}
+        {%- endfor -%}
+      </div>
+      {%- assign tab_count = tab_count | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if section.settings.show_view_all -%}
+    <div class="slider-view-all">
+      <a href="/collections" class="view-all-link" id="view-all-link-{{ section.id }}">View All</a>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Best Sellers Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Best Sellers"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 4,
+      "max": 15,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View All' Link",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_tab",
+      "name": "Collection Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Name Override",
+          "info": "Leave blank to use the collection name."
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best Sellers Slider",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

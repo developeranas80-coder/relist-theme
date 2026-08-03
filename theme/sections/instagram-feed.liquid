@@ -1,0 +1,198 @@
+<section class="instagram-feed-section" id="section-instagram">
+  <div class="insta-header">
+    {%- if section.settings.title != blank -%}
+      <h2 class="insta-title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subtitle != blank -%}
+      <p class="insta-subtitle">{{ section.settings.subtitle | escape }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="insta-slider-container">
+    <!-- ROW 1: Auto Slides RIGHT -->
+    <div class="insta-row-wrapper">
+      <div class="insta-row-track slide-right">
+        {%- for block in section.blocks -%}
+          <div class="insta-card {% if block.type == 'video_post' %}insta-video-card{% endif %}" {{ block.shopify_attributes }}>
+            {%- if block.type == 'video_post' -%}
+              {%- if block.settings.video_url_mp4 != blank -%}
+                <video class="insta-video" autoplay loop muted playsinline>
+                  <source src="{{ block.settings.video_url_mp4 }}" type="video/mp4">
+                </video>
+              {%- else -%}
+                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#eee; font-size:11px; color:#888;">Video Reel</div>
+              {%- endif -%}
+              <div class="insta-video-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg>
+              </div>
+            {%- else -%}
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 600, height: 600, crop: 'center' }}" alt="Instagram post" loading="lazy">
+              {%- else -%}
+                <img src="/images/ivory_linen_dress.png" alt="Instagram post">
+              {%- endif -%}
+            {%- endif -%}
+            <div class="insta-hover-overlay">
+              <div class="insta-overlay-content">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <span class="insta-overlay-handle">@relist</span>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+
+        <!-- Duplicated Loop for Seamless Scroll -->
+        {%- for block in section.blocks -%}
+          <div class="insta-card {% if block.type == 'video_post' %}insta-video-card{% endif %}">
+            {%- if block.type == 'video_post' -%}
+              {%- if block.settings.video_url_mp4 != blank -%}
+                <video class="insta-video" autoplay loop muted playsinline>
+                  <source src="{{ block.settings.video_url_mp4 }}" type="video/mp4">
+                </video>
+              {%- else -%}
+                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#eee; font-size:11px; color:#888;">Video Reel</div>
+              {%- endif -%}
+              <div class="insta-video-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg>
+              </div>
+            {%- else -%}
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 600, height: 600, crop: 'center' }}" alt="Instagram post" loading="lazy">
+              {%- else -%}
+                <img src="/images/ivory_linen_dress.png" alt="Instagram post">
+              {%- endif -%}
+            {%- endif -%}
+            <div class="insta-hover-overlay">
+              <div class="insta-overlay-content">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <span class="insta-overlay-handle">@relist</span>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <!-- ROW 2: Auto Slides LEFT -->
+    <div class="insta-row-wrapper">
+      <div class="insta-row-track slide-left">
+        {%- for block in section.blocks reversed -%}
+          <div class="insta-card {% if block.type == 'video_post' %}insta-video-card{% endif %}">
+            {%- if block.type == 'video_post' -%}
+              {%- if block.settings.video_url_mp4 != blank -%}
+                <video class="insta-video" autoplay loop muted playsinline>
+                  <source src="{{ block.settings.video_url_mp4 }}" type="video/mp4">
+                </video>
+              {%- else -%}
+                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#eee; font-size:11px; color:#888;">Video Reel</div>
+              {%- endif -%}
+              <div class="insta-video-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg>
+              </div>
+            {%- else -%}
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 600, height: 600, crop: 'center' }}" alt="Instagram post" loading="lazy">
+              {%- else -%}
+                <img src="/images/white_shirt.png" alt="Instagram post">
+              {%- endif -%}
+            {%- endif -%}
+            <div class="insta-hover-overlay">
+              <div class="insta-overlay-content">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <span class="insta-overlay-handle">@relist</span>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+
+        <!-- Duplicated Loop for Seamless Scroll -->
+        {%- for block in section.blocks reversed -%}
+          <div class="insta-card {% if block.type == 'video_post' %}insta-video-card{% endif %}">
+            {%- if block.type == 'video_post' -%}
+              {%- if block.settings.video_url_mp4 != blank -%}
+                <video class="insta-video" autoplay loop muted playsinline>
+                  <source src="{{ block.settings.video_url_mp4 }}" type="video/mp4">
+                </video>
+              {%- else -%}
+                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#eee; font-size:11px; color:#888;">Video Reel</div>
+              {%- endif -%}
+              <div class="insta-video-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg>
+              </div>
+            {%- else -%}
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 600, height: 600, crop: 'center' }}" alt="Instagram post" loading="lazy">
+              {%- else -%}
+                <img src="/images/white_shirt.png" alt="Instagram post">
+              {%- endif -%}
+            {%- endif -%}
+            <div class="insta-hover-overlay">
+              <div class="insta-overlay-content">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <span class="insta-overlay-handle">@relist</span>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Instagram Feed Grid",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shop the Looks"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sub-heading",
+      "default": "Tag @RELIST to get featured in our streetwear community"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_post",
+      "name": "Image Post",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Select Image"
+        }
+      ]
+    },
+    {
+      "type": "video_post",
+      "name": "Video Loop Post",
+      "settings": [
+        {
+          "type": "text",
+          "id": "video_url_mp4",
+          "label": "MP4 Video Loop URL",
+          "info": "Upload an MP4 file in Shopify Files and paste its URL link here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram Feed Grid",
+      "blocks": [
+        { "type": "image_post" },
+        { "type": "video_post", "settings": { "video_url_mp4": "https://player.vimeo.com/external/371842017.sd.mp4?s=0e21a2214434ff8c6fa2688081f9a1f28b7e21a3&profile_id=139&oauth2_token_id=57447761" } },
+        { "type": "image_post" },
+        { "type": "video_post", "settings": { "video_url_mp4": "https://player.vimeo.com/external/371842030.sd.mp4?s=0020a1f2214434ff8c6fa2688081f9a1f28b7e21a3&profile_id=139&oauth2_token_id=57447761" } },
+        { "type": "image_post" }
+      ]
+    }
+  ]
+}
+{% endschema %}

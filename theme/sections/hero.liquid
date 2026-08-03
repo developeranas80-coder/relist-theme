@@ -1,0 +1,203 @@
+<section class="hero-slider" id="hero-slider-element" {{ section.shopify_attributes }}>
+  <div class="hero-slides-container" id="hero-slides-track">
+    {%- for block in section.blocks -%}
+      <div class="hero-slide {% if forloop.first %}active{% endif %}" {{ block.shopify_attributes }}>
+        
+        {%- if block.type == 'video_slide' -%}
+          {%- if block.settings.image != blank -%}
+            <div class="hero-bg-image" style="background-image: url('{{ block.settings.image | image_url: width: 1800 }}');"></div>
+          {%- endif -%}
+          <video class="hero-video-bg" autoplay loop muted playsinline webkit-playsinline preload="auto">
+            {%- if block.settings.video_url != blank -%}
+              <source src="{{ block.settings.video_url }}" type="video/mp4">
+            {%- endif -%}
+          </video>
+        {%- else -%}
+          <div class="hero-bg-image" style="
+            background-image: url('{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 1800 }}{% else %}https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200{% endif %}');
+          "></div>
+        {%- endif -%}
+        
+        <div class="hero-overlay" style="background-color: rgba(0, 0, 0, {{ block.settings.overlay_opacity | divided_by: 100.0 }});"></div>
+        
+        <div class="hero-content">
+          {%- if block.settings.subtitle != blank -%}
+            <p class="hero-subtitle">{{ block.settings.subtitle | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.title != blank -%}
+            <h1 class="hero-title">{{ block.settings.title | escape }}</h1>
+          {%- endif -%}
+          {%- if block.settings.description != blank -%}
+            <p class="hero-paragraph">{{ block.settings.description | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.button_text != blank -%}
+            <a href="{{ block.settings.button_link | default: '#' }}" class="hero-cta-btn">{{ block.settings.button_text | escape }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.blocks.size > 1 -%}
+    <div class="hero-carousel-dots" id="hero-dots-container">
+      <button class="hero-play-pause-btn" id="hero-play-pause-btn" aria-label="Pause Auto Play">
+        <svg class="icon-pause" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <rect x="6" y="4" width="4" height="16" rx="1"/>
+          <rect x="14" y="4" width="4" height="16" rx="1"/>
+        </svg>
+        <svg class="icon-play" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+          <polygon points="6,4 18,12 6,20"/>
+        </svg>
+      </button>
+      <div class="dots-track">
+        {%- for block in section.blocks -%}
+          <div class="dot {% if forloop.first %}active{% endif %}" data-slide="{{ forloop.index0 }}" aria-label="Slide {{ forloop.index }}">
+            <span class="dot-progress-bar"></span>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Editorial Hero Slider",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "range",
+      "id": "slide_duration",
+      "label": "Slide Duration (seconds)",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 6,
+      "unit": "s"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-play slides",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_slide",
+      "name": "Image Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Hero Image"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Eyebrow / Subtitle",
+          "default": "AUTUMN / WINTER EDIT"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading Title",
+          "default": "STREETWEAR"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description Paragraph",
+          "default": "Discover our curated selection of high-end streetwear and refined daily essentials."
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "SHOP THE DROP"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Overlay Darkness",
+          "min": 0,
+          "max": 90,
+          "step": 5,
+          "default": 25,
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "type": "video_slide",
+      "name": "Video Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "Video URL (MP4)",
+          "info": "Upload an MP4 to Shopify Files and paste its URL here."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Fallback Image (while video loads)"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Eyebrow / Subtitle",
+          "default": "REFINED FORM & STRUCTURE"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading Title",
+          "default": "EDITORIAL"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description Paragraph",
+          "default": "Tailored silhouettes meeting contemporary elegance."
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "EXPLORE LOOKS"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Overlay Darkness",
+          "min": 0,
+          "max": 90,
+          "step": 5,
+          "default": 20,
+          "unit": "%"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial Hero Slider",
+      "blocks": [
+        { "type": "video_slide", "settings": { "title": "STREETWEAR", "subtitle": "AUTUMN / WINTER EDIT" } },
+        { "type": "image_slide", "settings": { "title": "EDITORIAL", "subtitle": "REFINED FORM & STRUCTURE" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

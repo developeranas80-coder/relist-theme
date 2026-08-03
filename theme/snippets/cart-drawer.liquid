@@ -1,0 +1,48 @@
+<div class="cart-drawer-overlay" id="cart-drawer-overlay-element">
+  <div class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>{{ 'general.cart.title' | t }}</h3>
+      <button class="cart-close-btn" id="cart-close-btn">&times;</button>
+    </div>
+    
+    <div class="cart-drawer-items" id="cart-drawer-items-box">
+      {%- if cart.item_count == 0 -%}
+        <div class="cart-empty-message">{{ 'general.cart.empty' | t }}</div>
+      {%- else -%}
+        <form action="{{ routes.cart_url }}" method="post" id="cart-form-drawer">
+          {%- for item in cart.items -%}
+            <div class="cart-item" data-variant-id="{{ item.variant_id }}">
+              <div class="cart-item-img">
+                <img src="{{ item.image | image_url: width: 120 }}" alt="{{ item.product.title | escape }}">
+              </div>
+              <div class="cart-item-details">
+                <h4 class="cart-item-title">{{ item.product.title }}</h4>
+                <div class="cart-item-meta">
+                  {%- unless item.product.has_only_default_variant -%}
+                    {{ item.variant.title }}
+                  {%- endunless -%}
+                </div>
+                <span class="cart-item-price">{{ item.final_line_price | money }}</span>
+                <div class="cart-item-qty">
+                  <a href="/cart/change?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" class="qty-btn">-</a>
+                  <span class="qty-val">{{ item.quantity }}</span>
+                  <a href="/cart/change?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}" class="qty-btn">+</a>
+                </div>
+                <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart-item-remove">{{ 'general.cart.remove' | t }}</a>
+              </div>
+            </div>
+          {%- endfor -%}
+        </form>
+      {%- endif -%}
+    </div>
+    
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-row">
+        <span>{{ 'general.cart.subtotal' | t }}</span>
+        <span>{{ cart.total_price | money }}</span>
+      </div>
+      <p style="font-size:11px; opacity:0.6; margin-bottom: 16px;">{{ 'general.cart.info' | t }}</p>
+      <button type="submit" form="cart-form-drawer" name="checkout" class="checkout-btn">{{ 'general.cart.checkout' | t }}</button>
+    </div>
+  </div>
+</div>

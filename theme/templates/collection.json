@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "settings": {
+        "banner_height": "medium",
+        "overlay_opacity_top": 10,
+        "overlay_opacity_bottom": 55,
+        "gradient_direction": "to bottom",
+        "eyebrow_text": "— COLLECTION —",
+        "text_alignment": "center",
+        "show_breadcrumb": true,
+        "show_description": true,
+        "show_product_count": true,
+        "show_scroll_indicator": true,
+        "enable_parallax": true
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 12
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main"
+  ]
+}

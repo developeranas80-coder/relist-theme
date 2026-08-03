@@ -1,0 +1,31 @@
+{
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "show_announcement": true,
+          "announcement_text": "Complimentary worldwide shipping on orders over $250",
+          "sticky_header": true,
+          "transparent_header": false
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    },
+    "settings": {
+      "color_primary_bg": "#faf6f0",
+      "color_secondary_bg": "#f0eae1",
+      "color_accent": "#8e745a",
+      "color_text": "#2b2825",
+      "font_heading": "'Cormorant Garamond', serif",
+      "font_body": "'Outfit', sans-serif",
+      "card_style": "minimal",
+      "grid_show_rating": true,
+      "social_instagram": "https://instagram.com",
+      "social_pinterest": "https://pinterest.com"
+    }
+  }
+}

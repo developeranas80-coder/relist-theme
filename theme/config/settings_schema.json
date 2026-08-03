@@ -1,0 +1,103 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "relist theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Relist Custom",
+    "theme_documentation_url": "https://relist-aesthetic-docs.myshopify.com",
+    "theme_support_url": "https://relist-aesthetic-docs.myshopify.com/support"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary_bg",
+        "label": "Primary Background",
+        "default": "#faf6f0"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_bg",
+        "label": "Secondary Background",
+        "default": "#f0eae1"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent Color (Buttons & Highlights)",
+        "default": "#8e745a"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Typography Text Color",
+        "default": "#2b2825"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "select",
+        "id": "font_heading",
+        "label": "Heading Font",
+        "options": [
+          { "value": "'Cormorant Garamond', serif", "label": "Cormorant Garamond" },
+          { "value": "'Playfair Display', serif", "label": "Playfair Display" },
+          { "value": "'Outfit', sans-serif", "label": "Outfit (Modern Sans)" },
+          { "value": "'Inter', sans-serif", "label": "Inter (Minimalist)" }
+        ],
+        "default": "'Cormorant Garamond', serif"
+      },
+      {
+        "type": "select",
+        "id": "font_body",
+        "label": "Body Font",
+        "options": [
+          { "value": "'Outfit', sans-serif", "label": "Outfit" },
+          { "value": "'Inter', sans-serif", "label": "Inter" },
+          { "value": "system-ui, sans-serif", "label": "System default" }
+        ],
+        "default": "'Outfit', sans-serif"
+      }
+    ]
+  },
+  {
+    "name": "Product Grid",
+    "settings": [
+      {
+        "type": "select",
+        "id": "card_style",
+        "label": "Product Card Style",
+        "options": [
+          { "value": "minimal", "label": "Minimal Editorial" },
+          { "value": "boxed", "label": "Boxed with Muted Border" }
+        ],
+        "default": "minimal"
+      },
+      {
+        "type": "checkbox",
+        "id": "grid_show_rating",
+        "label": "Show Reviews & Ratings",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Social Media Links",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest",
+        "label": "Pinterest URL"
+      }
+    ]
+  }
+]

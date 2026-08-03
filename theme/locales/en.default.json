@@ -1,0 +1,30 @@
+{
+  "general": {
+    "search": {
+      "placeholder": "Search our collection...",
+      "no_results": "No items found matching your query",
+      "heading": "Trending Searches",
+      "close": "Close search"
+    },
+    "cart": {
+      "title": "Shopping Bag",
+      "empty": "Your bag is empty",
+      "subtotal": "Subtotal",
+      "checkout": "Secure Checkout",
+      "info": "Taxes and shipping calculated at checkout",
+      "qty_label": "Quantity",
+      "remove": "Remove"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Bag",
+      "sold_out": "Sold Out",
+      "sale": "Sale",
+      "color": "Color",
+      "size": "Size",
+      "back_to_catalog": "Back to catalog",
+      "reviews_label": "Customer reviews"
+    }
+  }
+}

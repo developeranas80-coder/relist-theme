@@ -1,0 +1,62 @@
+{%- comment -%}
+    Renders a product card in collection grids.
+    Accepts:
+    - product: {Object} Product Liquid Object
+{%- endcomment -%}
+
+{%- assign primary_image = product.featured_image -%}
+{%- assign hover_image = product.images[1] | default: primary_image -%}
+
+<div class="product-card card-style-{{ settings.card_style }}" data-id="{{ product.id }}">
+  <a href="{{ product.url }}" class="card-media">
+    {%- if product.compare_at_price > product.price -%}
+      <span class="card-badge-tag">{{ 'products.product.sale' | t }}</span>
+    {%- endif -%}
+    
+    <img src="{{ primary_image | image_url: width: 600 }}" class="card-img img-primary" alt="{{ product.title | escape }}" loading="lazy">
+    <img src="{{ hover_image | image_url: width: 600 }}" class="card-img img-hover" alt="{{ product.title | escape }}" loading="lazy">
+    
+    <!-- Add to Basket hover bar -->
+    <div class="card-quick-add-bar">
+      <span class="card-quick-add-text">Add to Basket</span>
+      <span class="card-quick-add-icon">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      </span>
+    </div>
+  </a>
+
+  <div class="card-details">
+    {%- if settings.grid_show_rating and product.metafields.reviews.rating.value != blank -%}
+      <div class="card-rating-row" style="font-size:11px; color:var(--accent-color); margin-bottom:4px; display:flex; align-items:center; gap:4px;">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span style="opacity:0.6">({{ product.metafields.reviews.rating_count.value }})</span>
+      </div>
+    {%- endif -%}
+
+    <h3 class="card-title"><a href="{{ product.url }}" style="text-decoration:none; color:inherit;">{{ product.title }}</a></h3>
+    
+    <!-- Subtitle (type and vendor) -->
+    <div class="card-subtitle">{{ product.type | default: 'CLOTHING' }} | {{ product.vendor | default: 'RELIST' }}</div>
+
+    <div class="card-price-wrapper">
+      <span class="card-price-current">{{ product.price | money }}</span>
+      {%- if product.compare_at_price > product.price -%}
+        <span class="card-price-compare">{{ product.compare_at_price | money }}</span>
+      {%- endif -%}
+    </div>
+
+    <!-- Color Swatches Preview -->
+    {%- for option in product.options_with_values -%}
+      {%- if option.name == 'Color' or option.name == 'Colour' -%}
+        <div class="card-swatches">
+          {%- for value in option.values -%}
+            <span class="swatch-dot {% if forloop.first %}active{% endif %}" 
+              style="background-color: {{ value | handle | replace: '-', '' }};"
+              title="{{ value | escape }}">
+            </span>
+          {%- endfor -%}
+        </div>
+      {%- endif -%-}
+    {%- endfor -%}
+  </div>
+</div>

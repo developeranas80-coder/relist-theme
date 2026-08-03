@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "banner": {
+      "type": "hero",
+      "settings": {
+        "title": "Quiet Luxury, Refined Form",
+        "subtitle": "Relist Autumn / Winter Collection",
+        "button_text": "Explore the Collection",
+        "overlay_opacity": 25
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Selected Pieces",
+        "subtitle": "Meticulously structured essentials",
+        "collection": "all",
+        "products_to_show": 4
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "featured_collection"
+  ]
+}

@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RELIST THEME — Premium Fashion Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&family=Syne:wght@600;700;800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Floating Customizer Trigger -->
+  <button class="customizer-floating-trigger" id="customizer-floating-trigger" aria-label="Open Theme Customizer">
+    <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd"
+        d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+        clip-rule="evenodd" />
+    </svg>
+    <span>Customize</span>
+  </button>
+
+  <!-- Theme Customizer Drawer -->
+  <div class="customizer-drawer-overlay" id="customizer-drawer-overlay">
+    <aside class="customizer-drawer-panel">
+      <div class="sidebar-title">
+        <span>Theme Settings</span>
+        <button class="customizer-drawer-close" id="customizer-drawer-close-btn">&times;</button>
+      </div>
+      <div class="sidebar-scrollable">
+        <div class="customizer-section" style="margin-bottom: 20px;">
+          <button class="export-btn" id="export-theme-btn" style="width:100%; padding:12px; font-weight:600;">Download
+            Theme Code</button>
+        </div>
+        <div class="customizer-section">
+          <div class="section-title">Color Presets</div>
+          <div class="preset-selector">
+            <div class="preset-card active" data-preset="monoLight">
+              <span class="preset-name">Mono Light</span>
+              <div class="preset-preview-dots">
+                <span class="preview-dot" style="background-color: #FFFFFF"></span>
+                <span class="preview-dot" style="background-color: #F5F5F5"></span>
+                <span class="preview-dot" style="background-color: #000000"></span>
+              </div>
+            </div>
+            <div class="preset-card" data-preset="monoDark">
+              <span class="preset-name">Mono Dark</span>
+              <div class="preset-preview-dots">
+                <span class="preset-dot" style="background-color: #000000"></span>
+                <span class="preset-dot" style="background-color: #111111"></span>
+                <span class="preset-dot" style="background-color: #FFFFFF"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="customizer-section">
+          <div class="section-title">Custom Colors</div>
+          <div class="control-group">
+            <label for="color-primary-bg">Primary Background</label>
+            <input type="color" id="color-primary-bg" value="#FFFFFF">
+          </div>
+          <div class="control-group">
+            <label for="color-secondary-bg">Secondary Background</label>
+            <input type="color" id="color-secondary-bg" value="#F5F5F5">
+          </div>
+          <div class="control-group">
+            <label for="color-accent">Accent Color</label>
+            <input type="color" id="color-accent" value="#000000">
+          </div>
+          <div class="control-group">
+            <label for="color-text">Text Color</label>
+            <input type="color" id="color-text" value="#000000">
+          </div>
+        </div>
+        <div class="customizer-section">
+          <div class="section-title">Typography</div>
+          <div class="control-group">
+            <label for="font-headings-select">Heading Font</label>
+            <select id="font-headings-select">
+              <option value="'Syne', 'Plus Jakarta Sans', sans-serif" selected>Syne (Bold Ultra Display)</option>
+              <option value="'Space Grotesk', sans-serif">Space Grotesk (Edgy Geometric)</option>
+              <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans (Modern Clean)</option>
+              <option value="'Outfit', sans-serif">Outfit (Minimal)</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="font-body-select">Body Font</label>
+            <select id="font-body-select">
+              <option value="'Plus Jakarta Sans', sans-serif" selected>Plus Jakarta Sans</option>
+              <option value="'Outfit', sans-serif">Outfit</option>
+              <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+              <option value="'Helvetica Neue', Arial, sans-serif">Helvetica Neue</option>
+            </select>
+          </div>
+        </div>
+        <div class="customizer-section">
+          <div class="section-title">Header Settings</div>
+          <div class="control-group checkbox-group">
+            <input type="checkbox" id="header-show-announcement">
+            <label for="header-show-announcement">Show Announcement Bar</label>
+          </div>
+          <div class="control-group">
+            <label for="header-announcement-text">Announcement Text</label>
+            <input type="text" id="header-announcement-text" value="FREE SHIPPING ON ORDERS OVER PKR 3000">
+          </div>
+          <div class="control-group checkbox-group">
+            <input type="checkbox" id="header-sticky" checked>
+            <label for="header-sticky">Sticky Header</label>
+          </div>
+          <div class="control-group checkbox-group">
+            <input type="checkbox" id="header-transparent" checked>
+            <label for="header-transparent">Transparent Header (Homepage)</label>
+          </div>
+        </div>
+        <div class="customizer-section">
+          <div class="section-title">Hero Banner</div>
+          <div class="control-group">
+            <label for="hero-title-input">Banner Title</label>
+            <input type="text" id="hero-title-input" value="Resort">
+          </div>
+          <div class="control-group">
+            <label for="hero-subtitle-input">Banner Subtitle</label>
+            <input type="text" id="hero-subtitle-input" value="">
+          </div>
+          <div class="control-group">
+            <label for="hero-button-input">Button Text</label>
+            <input type="text" id="hero-button-input" value="">
+          </div>
+          <div class="control-group">
+            <label for="hero-overlay-input">Overlay Opacity</label>
+            <input type="range" id="hero-overlay-input" min="0" max="80" value="10" style="width:100%">
+          </div>
+        </div>
+        <div class="customizer-section">
+          <div class="section-title">Product Grid</div>
+          <div class="control-group">
+            <label for="card-style-select">Card Style</label>
+            <select id="card-style-select">
+              <option value="minimal" selected>Minimal (Relist)</option>
+              <option value="boxed">Boxed with Border</option>
+            </select>
+          </div>
+          <div class="control-group checkbox-group">
+            <input type="checkbox" id="grid-show-rating">
+            <label for="grid-show-rating">Show Ratings</label>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ==================== STOREFRONT ==================== -->
+  <div class="storefront" id="storefront-app">
+
+    <!-- Announcement Bar (hidden by default) -->
+    <div class="announcement-bar" id="announcement-bar-element">
+      FREE SHIPPING ON ORDERS OVER PKR 3000
+    </div>
+
+    <!-- ===== HEADER (Relist exact layout) ===== -->
+    <header class="store-header transparent" id="store-header-element">
+      <div class="header-left-group">
+        <button class="header-icon hamburger-trigger" id="menu-drawer-trigger-btn" aria-label="Menu">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <nav class="store-nav-links">
+          <a href="#" class="nav-link-top" data-link="all" data-gender="MEN">MEN</a>
+          <a href="#" class="nav-link-top active" data-link="all" data-gender="WOMEN">WOMEN</a>
+          <a href="#" class="nav-link-top" data-link="all">JUNIORS</a>
+        </nav>
+      </div>
+
+      <!-- CENTERED LOGO -->
+      <a href="#" class="store-logo" id="store-logo-link">Relist</a>
+
+      <div class="header-right-group">
+        <div class="header-search-bar">
+          <button class="header-icon search-icon-btn" id="search-trigger-btn" aria-label="Search">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg>
+          </button>
+          <span class="search-label" id="search-label-text">Search</span>
+        </div>
+        <button class="header-icon" aria-label="Account">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M16 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+        </button>
+        <button class="header-icon" id="cart-trigger-btn" aria-label="Cart">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6z" />
+            <path d="M3 6h18" />
+            <path d="M16 10a4 4 0 01-8 0" />
+          </svg>
+          <span class="cart-badge" id="cart-badge-count">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hamburger Menu Drawer — Relist style with gender tabs -->
+    <div class="menu-drawer-overlay" id="menu-drawer-overlay-element">
+      <div class="menu-drawer">
+        <div class="menu-drawer-header">
+          <button class="menu-drawer-close" id="menu-drawer-close-btn">&times;</button>
+        </div>
+        <!-- Gender Tabs -->
+        <div class="menu-drawer-tabs">
+          <button class="menu-tab active" data-gender="WOMEN">WOMEN</button>
+          <button class="menu-tab" data-gender="MEN">MEN</button>
+          <button class="menu-tab" data-gender="JUNIORS">JUNIORS</button>
+        </div>
+        <div class="menu-drawer-body">
+          <!-- Left Panel: Category Links (populated by JS) -->
+          <div class="menu-drawer-left">
+            <nav class="menu-drawer-nav" id="menu-drawer-nav-links">
+              <!-- Populated dynamically based on active tab -->
+            </nav>
+          </div>
+          <!-- Right Panel: Promo Image -->
+          <div class="menu-drawer-right">
+            <div class="menu-drawer-promo" data-link="dresses">
+              <img src="/images/brown_dress.png" class="menu-promo-img" alt="New Collection">
+              <div class="menu-promo-content">
+                <span class="menu-promo-tag">NEW COLLECTION</span>
+                <h4>MIDSUMMER EDIT</h4>
+                <button class="menu-promo-btn" data-link="dresses">Shop Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Predictive Search Overlay -->
+    <div class="search-overlay" id="search-overlay-element">
+      <div class="search-bar-container">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8" />
+          <path d="M21 21l-4.35-4.35" />
+        </svg>
+        <input type="text" class="search-input" id="search-input-field" placeholder="Search products..."
+          autocomplete="off">
+        <button class="search-close-btn" id="search-close-btn">&times;</button>
+      </div>
+      <div class="search-results-preview" id="search-results-box">
+        <div class="search-results-title">Trending Searches</div>
+        <div class="search-suggestions">
+          <span class="suggestion-tag">T-Shirts</span>
+          <span class="suggestion-tag">Dresses</span>
+          <span class="suggestion-tag">Denim</span>
+          <span class="suggestion-tag">Shirts</span>
+        </div>
+        <div class="search-results-title" style="margin-top: 24px;">Results</div>
+        <div class="search-products-hits" id="search-hits-grid"></div>
+      </div>
+    </div>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="storefront-main">
+
+      <!-- ===== 1. HOMEPAGE VIEW ===== -->
+      <div id="homepage-view">
+
+        <!-- Hero Slider (Aesthetic Fashion Cross-Fade Video Slides) -->
+        <section class="hero-slider" id="hero-slider-element">
+          <div class="hero-slides-container" id="hero-slides-track">
+            <!-- Slide 1: High Fashion Runway / Editorial Loop -->
+            <div class="hero-slide active">
+              <div class="hero-bg-image" style="background-image: url('/images/charcoal_wool_coat.png');"></div>
+              <video class="hero-video-bg" autoplay loop muted playsinline webkit-playsinline preload="auto">
+                <source src="/videos/hero.mp4" type="video/mp4">
+              </video>
+              <div class="hero-overlay"></div>
+              <div class="hero-content">
+                <p class="hero-subtitle">AUTUMN / WINTER EDIT</p>
+                <h1 class="hero-title">STREETWEAR</h1>
+                <p class="hero-paragraph">Discover our curated selection of high-end streetwear, oversized outerwear,
+                  and refined daily essentials designed for modern movement.</p>
+                <a href="#" class="hero-cta-btn" data-link="all">SHOP THE DROP</a>
+              </div>
+            </div>
+            <!-- Slide 2: Urban Luxury Brand Loop -->
+            <div class="hero-slide">
+              <div class="hero-bg-image" style="background-image: url('/images/beige_cashmere_knit.png');"></div>
+              <video class="hero-video-bg" autoplay loop muted playsinline webkit-playsinline preload="auto">
+                <source src="/videos/hero-2.mp4" type="video/mp4">
+              </video>
+              <div class="hero-overlay"></div>
+              <div class="hero-content">
+                <p class="hero-subtitle">REFINED FORM & STRUCTURE</p>
+                <h1 class="hero-title">EDITORIAL</h1>
+                <p class="hero-paragraph">Tailored silhouettes meeting contemporary elegance. Experience luxury
+                  craftsmanship built with uncompromising attention to detail.</p>
+                <a href="#" class="hero-cta-btn" data-link="denim">EXPLORE LOOKS</a>
+              </div>
+            </div>
+          </div>
+          <div class="hero-carousel-dots" id="hero-dots-container">
+            <button class="hero-play-pause-btn" id="hero-play-pause-btn" aria-label="Pause Auto Play">
+              <svg class="icon-pause" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="6" y="4" width="4" height="16" rx="1" />
+                <rect x="14" y="4" width="4" height="16" rx="1" />
+              </svg>
+              <svg class="icon-play" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"
+                style="display:none;">
+                <polygon points="6,4 18,12 6,20" />
+              </svg>
+            </button>
+            <div class="dots-track">
+              <div class="dot active" data-slide="0" aria-label="Slide 1">
+                <span class="dot-progress-bar"></span>
+              </div>
+              <div class="dot" data-slide="1" aria-label="Slide 2">
+                <span class="dot-progress-bar"></span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Category Cards Row (6 columns, edge to edge) -->
+        <section class="category-cards-section">
+          <div class="category-cards-grid">
+            <div class="category-card" data-link="t-shirts">
+              <img src="/images/graphic_tshirt_green.png" alt="T-Shirts">
+              <span class="category-card-label">T-SHIRTS</span>
+            </div>
+            <div class="category-card" data-link="shirts">
+              <img src="/images/white_shirt.png" alt="Shirts">
+              <span class="category-card-label">SHIRTS</span>
+            </div>
+            <div class="category-card" data-link="dresses">
+              <img src="/images/brown_dress.png" alt="Dresses">
+              <span class="category-card-label">DRESSES</span>
+            </div>
+            <div class="category-card" data-link="denim">
+              <img src="/images/charcoal_wool_coat.png" alt="Denim">
+              <span class="category-card-label">DENIM</span>
+            </div>
+            <div class="category-card" data-link="skirts">
+              <img src="/images/black_silk_dress.png" alt="Skirts & Shorts">
+              <span class="category-card-label">SKIRTS & SHORTS</span>
+            </div>
+            <div class="category-card" data-link="all">
+              <img src="/images/red_polo_shirt.png" alt="Trousers">
+              <span class="category-card-label">TROUSERS</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- NEW ARRIVALS — Horizontal Product Slider -->
+        <section class="product-slider-section" id="section-new-arrivals">
+          <div class="slider-section-header">
+            <h2 class="slider-section-title">New Arrivals</h2>
+            <div class="slider-nav-arrows">
+              <button class="slider-arrow slider-prev" data-slider="new-arrivals" aria-label="Previous">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button class="slider-arrow slider-next" data-slider="new-arrivals" aria-label="Next">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="product-slider-track" id="slider-new-arrivals">
+            <!-- Populated by JS -->
+          </div>
+          <div class="slider-view-all">
+            <a href="#" class="view-all-link" data-link="all">View All</a>
+          </div>
+        </section>
+
+        <!-- Promotional Banner — Side by Side -->
+        <section class="promo-banners-section">
+          <div class="promo-banners-grid">
+            <div class="promo-banner-card" data-link="dresses">
+              <img src="/images/brown_dress.png" alt="Dresses Collection">
+              <div class="promo-banner-overlay">
+                <span class="promo-banner-label">DRESSES</span>
+                <span class="promo-banner-cta">Shop Now →</span>
+              </div>
+            </div>
+            <div class="promo-banner-card" data-link="shirts">
+              <img src="/images/white_shirt.png" alt="Shirts Collection">
+              <div class="promo-banner-overlay">
+                <span class="promo-banner-label">SHIRTS</span>
+                <span class="promo-banner-cta">Shop Now →</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BEST SELLERS — Tabs + Product Slider -->
+        <section class="product-slider-section" id="section-best-sellers">
+          <div class="slider-section-header">
+            <h2 class="slider-section-title">Best Sellers</h2>
+            <div class="slider-nav-arrows">
+              <button class="slider-arrow slider-prev" data-slider="best-sellers" aria-label="Previous">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button class="slider-arrow slider-next" data-slider="best-sellers" aria-label="Next">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <!-- Best Sellers Category Tabs -->
+          <div class="best-sellers-tabs" id="best-sellers-tabs">
+            <button class="bs-tab active" data-bs-cat="all">ALL</button>
+            <button class="bs-tab" data-bs-cat="t-shirts">T-SHIRTS</button>
+            <button class="bs-tab" data-bs-cat="shirts">SHIRTS</button>
+            <button class="bs-tab" data-bs-cat="dresses">DRESSES</button>
+            <button class="bs-tab" data-bs-cat="denim">DENIM</button>
+          </div>
+          <div class="product-slider-track" id="slider-best-sellers">
+            <!-- Populated by JS -->
+          </div>
+          <div class="slider-view-all">
+            <a href="#" class="view-all-link" data-link="all">View All</a>
+          </div>
+        </section>
+
+        <!-- Lookbook Section — Shop This Look (Interactive Hotspots) -->
+        <section class="lookbook-section" id="section-lookbook">
+          <div class="lookbook-header">
+            <span class="lookbook-eyebrow">— CURATED STYLE —</span>
+            <h2 class="lookbook-section-title">Shop This Look</h2>
+            <p class="lookbook-description">Tap the hotspots to discover every piece in this styled outfit. Bundle &
+              save.</p>
+          </div>
+          <div class="lookbook-layout">
+            <!-- Left: Large outfit image with hotspot pins -->
+            <div class="lookbook-image-wrapper">
+              <img src="/images/ivory_linen_dress.png" alt="Shop This Look — Styled Outfit" class="lookbook-main-img">
+              <!-- Hotspot 1 — top (shirt/jacket area) -->
+              <button class="lookbook-hotspot" style="top: 22%; left: 38%;" data-hotspot="1"
+                aria-label="View product 1">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-icon">+</span>
+                <div class="hotspot-tooltip">
+                  <img src="/images/white_shirt.png" alt="Oversized Button Down Shirt" class="hotspot-tooltip-img">
+                  <div class="hotspot-tooltip-info">
+                    <span class="hotspot-tooltip-name">Oversized Button Down Shirt</span>
+                    <span class="hotspot-tooltip-price">PKR 4,290</span>
+                  </div>
+                </div>
+              </button>
+              <!-- Hotspot 2 — mid (dress/bottom area) -->
+              <button class="lookbook-hotspot" style="top: 55%; left: 50%;" data-hotspot="2"
+                aria-label="View product 2">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-icon">+</span>
+                <div class="hotspot-tooltip tooltip-left">
+                  <img src="/images/brown_dress.png" alt="Tiered Midi Dress" class="hotspot-tooltip-img">
+                  <div class="hotspot-tooltip-info">
+                    <span class="hotspot-tooltip-name">Tiered Midi Dress</span>
+                    <span class="hotspot-tooltip-price">PKR 5,490</span>
+                  </div>
+                </div>
+              </button>
+              <!-- Hotspot 3 — bottom (accessory/shoes area) -->
+              <button class="lookbook-hotspot" style="top: 78%; left: 35%;" data-hotspot="3"
+                aria-label="View product 3">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-icon">+</span>
+                <div class="hotspot-tooltip">
+                  <img src="/images/beige_cashmere_knit.png" alt="Relaxed Fit Polo" class="hotspot-tooltip-img">
+                  <div class="hotspot-tooltip-info">
+                    <span class="hotspot-tooltip-name">Relaxed Fit Polo</span>
+                    <span class="hotspot-tooltip-price">PKR 3,490</span>
+                  </div>
+                </div>
+              </button>
+            </div>
+
+            <!-- Right: Shop This Look product panel -->
+            <div class="lookbook-panel">
+              <div class="lookbook-panel-header">
+                <h3 class="lookbook-panel-title">SHOP THIS LOOK</h3>
+                <p class="lookbook-panel-subtitle">BUNDLE & SAVE</p>
+              </div>
+              <div class="lookbook-panel-products">
+                <!-- Product 1 -->
+                <div class="lookbook-panel-item" data-hotspot-target="1">
+                  <span class="lookbook-panel-number">1</span>
+                  <img src="/images/white_shirt.png" alt="Oversized Button Down Shirt" class="lookbook-panel-thumb">
+                  <div class="lookbook-panel-info">
+                    <span class="lookbook-panel-name">Oversized Button Down Shirt</span>
+                    <span class="lookbook-panel-price">PKR 4,290</span>
+                    <button class="lookbook-panel-btn" data-product-id="oversized-button-down">CHOOSE OPTIONS</button>
+                  </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="lookbook-panel-item" data-hotspot-target="2">
+                  <span class="lookbook-panel-number">2</span>
+                  <img src="/images/brown_dress.png" alt="Tiered Midi Dress" class="lookbook-panel-thumb">
+                  <div class="lookbook-panel-info">
+                    <span class="lookbook-panel-name">Tiered Midi Dress</span>
+                    <span class="lookbook-panel-price">PKR 5,490</span>
+                    <button class="lookbook-panel-btn" data-product-id="tiered-midi-dress">CHOOSE OPTIONS</button>
+                  </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="lookbook-panel-item" data-hotspot-target="3">
+                  <span class="lookbook-panel-number">3</span>
+                  <img src="/images/beige_cashmere_knit.png" alt="Relaxed Fit Polo" class="lookbook-panel-thumb">
+                  <div class="lookbook-panel-info">
+                    <span class="lookbook-panel-name">Relaxed Fit Polo</span>
+                    <span class="lookbook-panel-price">PKR 3,490</span>
+                    <button class="lookbook-panel-btn lookbook-panel-btn-filled" data-product-id="relaxed-polo-tee">ADD
+                      TO CART</button>
+                  </div>
+                </div>
+              </div>
+              <div class="lookbook-panel-footer">
+                <div class="lookbook-panel-total">
+                  <span>Total Bundle Price</span>
+                  <span class="lookbook-panel-total-price">PKR 13,270</span>
+                </div>
+                <button class="lookbook-panel-bundle-btn">ADD ALL TO CART</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TRENDING NOW — Product Slider -->
+        <section class="product-slider-section" id="section-trending">
+          <div class="slider-section-header">
+            <h2 class="slider-section-title">Trending Now</h2>
+            <div class="slider-nav-arrows">
+              <button class="slider-arrow slider-prev" data-slider="trending" aria-label="Previous">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button class="slider-arrow slider-next" data-slider="trending" aria-label="Next">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="product-slider-track" id="slider-trending">
+            <!-- Populated by JS -->
+          </div>
+          <div class="slider-view-all">
+            <a href="#" class="view-all-link" data-link="all">View All</a>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ===== 2. COLLECTION VIEW ===== -->
+      <div id="collection-view" style="display:none;">
+
+        <!-- Editorial Collection Hero Banner (Top of Shop / Collection Page) -->
+        <section class="collection-banner" id="collection-banner-element">
+          <div class="collection-banner__media">
+            <img src="/images/charcoal_wool_coat.png" alt="Collection Banner" class="collection-banner__img"
+              id="collection-banner-img" loading="eager">
+          </div>
+          <div class="collection-banner__overlay"
+            style="background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.6));"></div>
+          <div class="collection-banner__content">
+            <span class="collection-banner__eyebrow" id="collection-banner-eyebrow">— CURATED EDIT —</span>
+            <h1 class="collection-banner__title" id="collection-banner-title">WOMEN COLLECTION</h1>
+            <div class="collection-banner__description" id="collection-banner-desc">
+              <p>Discover our full selection of high-end streetwear, oversized outerwear, and refined daily essentials
+                designed for modern movement.</p>
+            </div>
+            <div class="collection-banner__meta">
+              <span class="collection-banner__count" id="collection-banner-count">12 Products</span>
+            </div>
+          </div>
+          <div class="collection-banner__scroll-indicator">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
+          </div>
+        </section>
+
+        <!-- Breadcrumb -->
+        <div class="collection-breadcrumb">
+          <a href="#" id="breadcrumb-home">HOME</a> /
+          <a href="#" id="breadcrumb-parent">WOMEN</a> /
+          <span id="breadcrumb-current">WOMEN - T-SHIRTS</span>
+        </div>
+
+        <!-- Sub-category filter tabs (scrollable pills) -->
+        <div class="collection-filter-bar">
+          <div class="filter-tabs-scroll">
+            <div class="filter-tabs" id="filter-tabs-row">
+              <button class="filter-tab active" data-collection="all">ALL</button>
+              <button class="filter-tab" data-collection="t-shirts">T-SHIRTS</button>
+              <button class="filter-tab" data-collection="shirts">SHIRTS</button>
+              <button class="filter-tab" data-collection="dresses">DRESSES</button>
+              <button class="filter-tab" data-collection="denim">DENIM</button>
+              <button class="filter-tab" data-collection="skirts">SKIRTS</button>
+            </div>
+          </div>
+          <div class="filter-bar-right">
+            <span class="product-count-label" id="product-count-label">12 Products</span>
+            <div class="grid-layout-toggles">
+              <button class="grid-toggle" data-cols="1" aria-label="1 Column">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <rect x="3" y="1" width="10" height="14" rx="1" />
+                </svg>
+              </button>
+              <button class="grid-toggle" data-cols="2" aria-label="2 Columns">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <rect x="1" y="1" width="6" height="14" rx="1" />
+                  <rect x="9" y="1" width="6" height="14" rx="1" />
+                </svg>
+              </button>
+              <button class="grid-toggle active" data-cols="5" aria-label="5 Columns">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <rect x="1" y="1" width="3" height="6" rx="0.5" />
+                  <rect x="5" y="1" width="3" height="6" rx="0.5" />
+                  <rect x="9" y="1" width="3" height="6" rx="0.5" />
+                  <rect x="1" y="9" width="3" height="6" rx="0.5" />
+                  <rect x="5" y="9" width="3" height="6" rx="0.5" />
+                  <rect x="9" y="9" width="3" height="6" rx="0.5" />
+                </svg>
+              </button>
+              <button class="grid-toggle filter-icon-btn" id="filter-drawer-trigger" aria-label="Filters">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M2 4h12M4 8h8M6 12h4" />
+                </svg>
+                <span class="filter-btn-label">Filters</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Grid (5 columns) -->
+        <div class="product-grid cols-5" id="catalog-grid"></div>
+      </div>
+
+      <!-- ===== 3. PRODUCT DETAIL VIEW ===== -->
+      <div id="product-detail-view" class="product-detail-view" style="display:none;">
+        <div class="product-detail-layout" id="product-detail-layout-box">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- ===== GLOBAL INSTAGRAM MARQUEE SECTION (PRESENT ON ALL PAGES) ===== -->
+      <section class="instagram-feed-section" id="section-instagram">
+        <div class="insta-header">
+          <div class="insta-header-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="5" />
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+            </svg>
+          </div>
+          <h2 class="insta-title">@RELIST</h2>
+          <p class="insta-subtitle">Tag us to get featured — real style, real people</p>
+        </div>
+
+        <div class="insta-slider-container">
+          <!-- ROW 1: Auto Slides RIGHT -->
+          <div class="insta-row-wrapper">
+            <div class="insta-row-track slide-right">
+              <!-- Original 6 Items -->
+              <div class="insta-card">
+                <img src="/images/ivory_linen_dress.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card insta-video-card">
+                <video class="insta-video" autoplay loop muted playsinline>
+                  <source src="https://videos.pexels.com/video-files/5705382/5705382-sd_540_960_25fps.mp4"
+                    type="video/mp4">
+                </video>
+                <div class="insta-video-badge">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff">
+                    <polygon points="5,3 19,12 5,21" />
+                  </svg>
+                </div>
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">2.4K</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/white_shirt.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/beige_cashmere_knit.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/charcoal_wool_coat.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/black_silk_dress.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Duplicated Set for Infinite Loop -->
+              <div class="insta-card">
+                <img src="/images/ivory_linen_dress.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card insta-video-card">
+                <video class="insta-video" autoplay loop muted playsinline>
+                  <source src="https://videos.pexels.com/video-files/5705382/5705382-sd_540_960_25fps.mp4"
+                    type="video/mp4">
+                </video>
+                <div class="insta-video-badge">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff">
+                    <polygon points="5,3 19,12 5,21" />
+                  </svg>
+                </div>
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">2.4K</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/white_shirt.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/beige_cashmere_knit.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/charcoal_wool_coat.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/black_silk_dress.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROW 2: Auto Slides LEFT -->
+          <div class="insta-row-wrapper">
+            <div class="insta-row-track slide-left">
+              <!-- Original 6 Items -->
+              <div class="insta-card insta-video-card">
+                <video class="insta-video" autoplay loop muted playsinline>
+                  <source src="https://videos.pexels.com/video-files/5622291/5622291-sd_540_960_25fps.mp4"
+                    type="video/mp4">
+                </video>
+                <div class="insta-video-badge">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff">
+                    <polygon points="5,3 19,12 5,21" />
+                  </svg>
+                </div>
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">1.8K</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/red_polo_shirt.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/graphic_tshirt_green.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/black_silk_dress_detail.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/ivory_linen_dress_detail.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/beige_cashmere_knit_detail.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Duplicated Set for Infinite Loop -->
+              <div class="insta-card insta-video-card">
+                <video class="insta-video" autoplay loop muted playsinline>
+                  <source src="https://videos.pexels.com/video-files/5622291/5622291-sd_540_960_25fps.mp4"
+                    type="video/mp4">
+                </video>
+                <div class="insta-video-badge">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff">
+                    <polygon points="5,3 19,12 5,21" />
+                  </svg>
+                </div>
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">1.8K</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/red_polo_shirt.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/graphic_tshirt_green.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/black_silk_dress_detail.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/ivory_linen_dress_detail.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="insta-card">
+                <img src="/images/beige_cashmere_knit_detail.png" alt="Community style">
+                <div class="insta-hover-overlay">
+                  <div class="insta-overlay-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span class="insta-overlay-handle">@relist</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer — Relist style -->
+    <footer class="store-footer">
+      <!-- Newsletter Section -->
+      <div class="footer-newsletter">
+        <h3 class="footer-newsletter-title">BE THE FIRST TO KNOW</h3>
+        <p class="footer-newsletter-text">Sign up for updates from Relist, including new arrivals, future events and
+          special projects.</p>
+        <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+          <input type="email" class="footer-newsletter-input" placeholder="Email Address" required>
+          <button type="submit" class="footer-newsletter-btn">SIGN ME UP!</button>
+        </form>
+      </div>
+      <!-- Footer Links -->
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Shopping Guide</h4>
+          <ul class="footer-links">
+            <li><a href="#" data-link="all">New In</a></li>
+            <li><a href="#" data-link="t-shirts">Women</a></li>
+            <li><a href="#" data-link="shirts">Men</a></li>
+            <li><a href="#">Juniors</a></li>
+            <li><a href="#">Store Locator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="#">Order Tracking</a></li>
+            <li><a href="#">Deliveries & Returns</a></li>
+            <li><a href="#">Exchange Policy</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>About Us</h4>
+          <ul class="footer-links">
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Corporate Responsibility</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect With Us</h4>
+          <div class="footer-social-icons">
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="TikTok">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M9 12a4 4 0 104 4V4a5 5 0 005 5" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z" />
+                <polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 All rights reserved.</span>
+      </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay-element">
+      <div class="cart-drawer">
+        <div class="cart-drawer-header">
+          <h3>Shopping Bag</h3>
+          <button class="cart-close-btn" id="cart-close-btn">&times;</button>
+        </div>
+        <div class="cart-drawer-items" id="cart-drawer-items-box"></div>
+        <div class="cart-drawer-footer">
+          <div class="cart-subtotal-row">
+            <span>Subtotal</span>
+            <span id="cart-subtotal-amount">PKR 0</span>
+          </div>
+          <p style="font-size:11px; opacity:0.6; margin-bottom: 16px;">Taxes and shipping calculated at checkout</p>
+          <button class="checkout-btn" onclick="alert('Redirecting to checkout!')">CHECKOUT</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="quick-view-overlay" id="quick-view-overlay-element">
+      <div class="quick-view-modal">
+        <button class="quick-view-close" id="quick-view-close-btn">&times;</button>
+        <div class="quick-view-media" id="quick-view-media-box"></div>
+        <div class="quick-view-info" id="quick-view-info-box"></div>
+      </div>
+    </div>
+
+    <!-- Filter Drawer (Collection Page) -->
+    <div class="filter-drawer-overlay" id="filter-drawer-overlay">
+      <div class="filter-drawer">
+        <div class="filter-drawer-header">
+          <h3>Filters</h3>
+          <button class="filter-drawer-close" id="filter-drawer-close">&times;</button>
+        </div>
+        <div class="filter-drawer-body">
+          <div class="filter-group">
+            <div class="filter-group-title">Sort By</div>
+            <div class="filter-options">
+              <label class="filter-radio"><input type="radio" name="sort" value="featured" checked> Featured</label>
+              <label class="filter-radio"><input type="radio" name="sort" value="price-asc"> Price: Low to High</label>
+              <label class="filter-radio"><input type="radio" name="sort" value="price-desc"> Price: High to Low</label>
+              <label class="filter-radio"><input type="radio" name="sort" value="newest"> Newest</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <div class="filter-group-title">Size</div>
+            <div class="filter-size-pills">
+              <button class="filter-size-pill">XS</button>
+              <button class="filter-size-pill">S</button>
+              <button class="filter-size-pill">M</button>
+              <button class="filter-size-pill">L</button>
+              <button class="filter-size-pill">XL</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <div class="filter-group-title">Price Range</div>
+            <div class="filter-options">
+              <label class="filter-checkbox"><input type="checkbox" value="0-2500"> Under PKR 2,500</label>
+              <label class="filter-checkbox"><input type="checkbox" value="2500-4000"> PKR 2,500 - 4,000</label>
+              <label class="filter-checkbox"><input type="checkbox" value="4000-6000"> PKR 4,000 - 6,000</label>
+              <label class="filter-checkbox"><input type="checkbox" value="6000+"> PKR 6,000+</label>
+            </div>
+          </div>
+        </div>
+        <div class="filter-drawer-footer">
+          <button class="filter-apply-btn" id="filter-apply-btn">Apply Filters</button>
+          <button class="filter-clear-btn" id="filter-clear-btn">Clear All</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Size Chart Modal -->
+    <div class="size-chart-overlay" id="size-chart-overlay">
+      <div class="size-chart-modal">
+        <button class="size-chart-close" id="size-chart-close-btn">&times;</button>
+        <div class="size-chart-header">
+          <h3>SIZE GUIDE</h3>
+          <p>Find your perfect fit with our detailed measurement guide.</p>
+        </div>
+        <div class="size-chart-unit-toggle">
+          <button class="size-unit-btn active" data-unit="in">INCHES</button>
+          <button class="size-unit-btn" data-unit="cm">CM</button>
+        </div>
+        <div class="size-chart-table-wrapper">
+          <table class="size-chart-table" id="size-chart-table">
+            <thead>
+              <tr>
+                <th>SIZE</th>
+                <th>CHEST</th>
+                <th>WAIST</th>
+                <th>HIPS</th>
+                <th>SHOULDER</th>
+                <th>LENGTH</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-in='{"chest":"34-36\"","waist":"26-28\"","hips":"36-38\"","shoulder":"15\"","length":"26\""}'
+                data-cm='{"chest":"86-91 cm","waist":"66-71 cm","hips":"91-96 cm","shoulder":"38 cm","length":"66 cm"}'>
+                <td><strong>XS</strong></td>
+                <td class="val-chest">34 - 36"</td>
+                <td class="val-waist">26 - 28"</td>
+                <td class="val-hips">36 - 38"</td>
+                <td class="val-shoulder">15"</td>
+                <td class="val-length">26"</td>
+              </tr>
+              <tr data-in='{"chest":"36-38\"","waist":"28-30\"","hips":"38-40\"","shoulder":"15.5\"","length":"27\""}'
+                data-cm='{"chest":"91-96 cm","waist":"71-76 cm","hips":"96-101 cm","shoulder":"39 cm","length":"68 cm"}'>
+                <td><strong>S</strong></td>
+                <td class="val-chest">36 - 38"</td>
+                <td class="val-waist">28 - 30"</td>
+                <td class="val-hips">38 - 40"</td>
+                <td class="val-shoulder">15.5"</td>
+                <td class="val-length">27"</td>
+              </tr>
+              <tr data-in='{"chest":"38-40\"","waist":"30-32\"","hips":"40-42\"","shoulder":"16\"","length":"28\""}'
+                data-cm='{"chest":"96-101 cm","waist":"76-81 cm","hips":"101-106 cm","shoulder":"40.5 cm","length":"71 cm"}'>
+                <td><strong>M</strong></td>
+                <td class="val-chest">38 - 40"</td>
+                <td class="val-waist">30 - 32"</td>
+                <td class="val-hips">40 - 42"</td>
+                <td class="val-shoulder">16"</td>
+                <td class="val-length">28"</td>
+              </tr>
+              <tr data-in='{"chest":"40-42\"","waist":"32-34\"","hips":"42-44\"","shoulder":"16.5\"","length":"29\""}'
+                data-cm='{"chest":"101-106 cm","waist":"81-86 cm","hips":"106-111 cm","shoulder":"42 cm","length":"73.5 cm"}'>
+                <td><strong>L</strong></td>
+                <td class="val-chest">40 - 42"</td>
+                <td class="val-waist">32 - 34"</td>
+                <td class="val-hips">42 - 44"</td>
+                <td class="val-shoulder">16.5"</td>
+                <td class="val-length">29"</td>
+              </tr>
+              <tr data-in='{"chest":"42-44\"","waist":"34-36\"","hips":"44-46\"","shoulder":"17\"","length":"30\""}'
+                data-cm='{"chest":"106-111 cm","waist":"86-91 cm","hips":"111-116 cm","shoulder":"43 cm","length":"76 cm"}'>
+                <td><strong>XL</strong></td>
+                <td class="val-chest">42 - 44"</td>
+                <td class="val-waist">34 - 36"</td>
+                <td class="val-hips">44 - 46"</td>
+                <td class="val-shoulder">17"</td>
+                <td class="val-length">30"</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="size-chart-tips">
+          <div class="size-tip-item">
+            <strong>Chest:</strong> Measure around the fullest part of your chest, keeping tape horizontal.
+          </div>
+          <div class="size-tip-item">
+            <strong>Waist:</strong> Measure around narrowest part of natural waistline.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky PDP Bottom Add to Cart Bar -->
+    <div class="pdp-sticky-bar" id="pdp-sticky-bar">
+      <div class="pdp-sticky-container">
+        <div class="pdp-sticky-product">
+          <img src="" alt="" class="pdp-sticky-thumb" id="pdp-sticky-thumb">
+          <div class="pdp-sticky-meta">
+            <span class="pdp-sticky-title" id="pdp-sticky-title">Product Title</span>
+            <span class="pdp-sticky-price" id="pdp-sticky-price">PKR 0</span>
+          </div>
+        </div>
+        <div class="pdp-sticky-actions">
+          <span class="pdp-sticky-variant-summary" id="pdp-sticky-variant-summary">Size: M</span>
+          <button class="pdp-sticky-add-btn" id="pdp-sticky-add-btn">
+            <span>ADD TO CART</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== BRAND DISCOUNT PROMO POPUP ===== -->
+    <div class="promo-popup-overlay" id="promo-popup-overlay">
+      <div class="promo-popup" id="promo-popup">
+        <!-- Close Button -->
+        <button class="promo-popup-close" id="promo-popup-close" aria-label="Close Popup">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- Left: Fashion Image -->
+        <div class="promo-popup-image">
+          <img src="/images/promo_popup_bg.png" alt="Exclusive Brand Sale">
+          <div class="promo-popup-image-overlay"></div>
+          <div class="promo-popup-image-badge">
+            <span class="promo-badge-percent">15%</span>
+            <span class="promo-badge-off">OFF</span>
+          </div>
+        </div>
+
+        <!-- Right: Content -->
+        <div class="promo-popup-content">
+          <div class="promo-popup-inner">
+            <span class="promo-popup-eyebrow">— EXCLUSIVE OFFER —</span>
+            <h2 class="promo-popup-title">UNLOCK YOUR<br>STYLE REWARD</h2>
+            <p class="promo-popup-desc">Join the Relist family and get <strong>15% OFF</strong> your first order. Plus,
+              early access to new drops and exclusive brand deals.</p>
+
+            <div class="promo-popup-brands">
+              <span class="promo-brand-tag">ZARA</span>
+              <span class="promo-brand-tag">H&M</span>
+              <span class="promo-brand-tag">NIKE</span>
+              <span class="promo-brand-tag">ADIDAS</span>
+              <span class="promo-brand-tag">LEVI'S</span>
+            </div>
+
+            <form class="promo-popup-form" id="promo-popup-form">
+              <div class="promo-input-wrapper">
+                <input type="email" class="promo-popup-input" id="promo-popup-email" placeholder="Enter your email"
+                  required autocomplete="email">
+                <button type="submit" class="promo-popup-submit" id="promo-popup-submit">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </form>
+
+            <div class="promo-popup-success" id="promo-popup-success">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span>Your code: <strong>RELIST15</strong></span>
+              <p class="promo-success-note">Use at checkout for 15% off</p>
+            </div>
+
+            <p class="promo-popup-footer">No spam, ever. Unsubscribe anytime.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

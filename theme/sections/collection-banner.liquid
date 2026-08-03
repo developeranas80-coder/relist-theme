@@ -1,0 +1,218 @@
+{%- comment -%}
+  Collection Banner — Premium editorial hero banner for collection pages.
+  Displays collection image, title, description with luxury overlay + parallax.
+{%- endcomment -%}
+
+{%- assign banner_image = collection.image -%}
+{%- if section.settings.image != blank -%}
+  {%- assign banner_image = section.settings.image -%}
+{%- endif -%}
+
+<section class="collection-banner" id="collection-banner-section" {{ section.shopify_attributes }}>
+  <div class="collection-banner__media">
+    {%- if banner_image != blank -%}
+      <img
+        src="{{ banner_image | image_url: width: 1920 }}"
+        srcset="{{ banner_image | image_url: width: 800 }} 800w,
+                {{ banner_image | image_url: width: 1200 }} 1200w,
+                {{ banner_image | image_url: width: 1920 }} 1920w"
+        sizes="100vw"
+        alt="{{ collection.title | escape }}"
+        class="collection-banner__img"
+        loading="eager"
+      >
+    {%- else -%}
+      <div class="collection-banner__placeholder">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5">
+          <rect x="8" y="8" width="64" height="64" rx="4"/>
+          <circle cx="28" cy="28" r="8"/>
+          <path d="M8 56l16-16 12 12 8-8 28 28"/>
+        </svg>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="collection-banner__overlay" style="
+    background: linear-gradient(
+      {{ section.settings.gradient_direction }},
+      rgba(0, 0, 0, {{ section.settings.overlay_opacity_top | divided_by: 100.0 }}),
+      rgba(0, 0, 0, {{ section.settings.overlay_opacity_bottom | divided_by: 100.0 }})
+    );
+  "></div>
+
+  <div class="collection-banner__content">
+    {%- if section.settings.show_breadcrumb -%}
+      <nav class="collection-banner__breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ routes.root_url }}">Home</a>
+        <span class="collection-banner__breadcrumb-sep">/</span>
+        <a href="{{ routes.collections_url }}">Collections</a>
+        <span class="collection-banner__breadcrumb-sep">/</span>
+        <span>{{ collection.title }}</span>
+      </nav>
+    {%- endif -%}
+
+    {%- if section.settings.eyebrow_text != blank -%}
+      <span class="collection-banner__eyebrow">{{ section.settings.eyebrow_text | escape }}</span>
+    {%- endif -%}
+
+    <h1 class="collection-banner__title">
+      {%- if section.settings.custom_title != blank -%}
+        {{ section.settings.custom_title | escape }}
+      {%- else -%}
+        {{ collection.title }}
+      {%- endif -%}
+    </h1>
+
+    {%- if section.settings.show_description and collection.description != blank -%}
+      <div class="collection-banner__description">
+        {{ collection.description }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_product_count -%}
+      <div class="collection-banner__meta">
+        <span class="collection-banner__count">{{ collection.products_count }} {{ collection.products_count | pluralize: 'Product', 'Products' }}</span>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.show_scroll_indicator -%}
+    <div class="collection-banner__scroll-indicator">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Collection Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Custom Banner Image",
+      "info": "Overrides the collection image. Recommended: 1920×600px or wider."
+    },
+    {
+      "type": "select",
+      "id": "banner_height",
+      "label": "Banner Height",
+      "options": [
+        { "value": "small", "label": "Small (280px)" },
+        { "value": "medium", "label": "Medium (380px)" },
+        { "value": "large", "label": "Large (480px)" },
+        { "value": "hero", "label": "Hero (600px)" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Overlay Settings"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_top",
+      "label": "Overlay Darkness (Top)",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "default": 10,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_bottom",
+      "label": "Overlay Darkness (Bottom)",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "default": 55,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "gradient_direction",
+      "label": "Gradient Direction",
+      "options": [
+        { "value": "to bottom", "label": "Top → Bottom" },
+        { "value": "to top", "label": "Bottom → Top" },
+        { "value": "to bottom right", "label": "Diagonal ↘" }
+      ],
+      "default": "to bottom"
+    },
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "Custom Title",
+      "info": "Leave blank to use the collection title."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "— COLLECTION —",
+      "info": "Small text displayed above the title."
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Display Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "label": "Show Breadcrumb Navigation",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show Collection Description",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_count",
+      "label": "Show Product Count",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scroll_indicator",
+      "label": "Show Scroll Down Indicator",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "Enable Parallax Effect",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Banner"
+    }
+  ]
+}
+{% endschema %}

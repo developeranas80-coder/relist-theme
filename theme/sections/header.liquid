@@ -1,0 +1,164 @@
+{%- if section.settings.show_announcement -%}
+  <div class="announcement-bar visible" style="background-color: var(--accent-color); color: var(--primary-bg); text-align: center; padding: 8px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;">
+    {{ section.settings.announcement_text }}
+  </div>
+{%- endif -%}
+
+<header class="store-header {% if section.settings.transparent_header and template == 'index' %}transparent{% endif %}" id="store-header-element">
+  <!-- Left side group: Hamburger trigger and top navigation links -->
+  <div class="header-left-group">
+    <button class="header-icon hamburger-trigger" id="menu-drawer-trigger-btn" aria-label="Open Menu Drawer">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <nav class="store-nav-links">
+      {%- for link in linklists[section.settings.menu].links limit: 3 -%}
+        <a href="{{ link.url }}" class="nav-link-top">{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+  </div>
+
+  <!-- Centered Logo -->
+  <a href="{{ routes.root_url }}" class="store-logo" id="store-logo-link">
+    {%- if section.settings.logo != blank -%}
+      <img src="{{ section.settings.logo | image_url: width: 150 }}" alt="{{ shop.name }}" style="max-height: 40px; object-fit: contain;">
+    {%- else -%}
+      RELIST THEME
+    {%- endif -%}
+  </a>
+  
+  <!-- Right side group: Search underline, Profile icon, Bag icon -->
+  <div class="header-right-group">
+    <div class="header-search-bar">
+      <input type="text" id="search-trigger-input" placeholder="Search" autocomplete="off">
+      <button class="header-icon" id="search-trigger-btn" aria-label="Search">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </button>
+    </div>
+    <button class="header-icon user-profile-btn" aria-label="User Profile">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </button>
+    <a href="{{ routes.cart_url }}" class="header-icon" id="cart-trigger-btn" aria-label="Shopping Cart">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span class="cart-badge" id="cart-badge-count">{{ cart.item_count }}</span>
+    </a>
+  </div>
+</header>
+
+<!-- Visual Hamburger Menu Drawer Overlay -->
+<div class="menu-drawer-overlay" id="menu-drawer-overlay-element">
+  <div class="menu-drawer">
+    <div class="menu-drawer-header">
+      <button class="menu-drawer-close" id="menu-drawer-close-btn">&times;</button>
+    </div>
+    <!-- Gender Tabs -->
+    <div class="menu-drawer-tabs">
+      <button class="menu-tab active" data-gender="WOMEN">WOMEN</button>
+      <button class="menu-tab" data-gender="MEN">MEN</button>
+      <button class="menu-tab" data-gender="JUNIORS">JUNIORS</button>
+    </div>
+    <div class="menu-drawer-body">
+      <!-- Left Panel: WOMEN Links -->
+      <div class="menu-drawer-left menu-gender-panel active" data-gender="WOMEN">
+        <nav class="menu-drawer-nav">
+          {%- for link in linklists[section.settings.menu_women].links -%}
+            <a href="{{ link.url }}" class="menu-nav-link">{{ link.title }}</a>
+          {%- else -%}
+            {%- for link in linklists[section.settings.menu].links -%}
+              <a href="{{ link.url }}" class="menu-nav-link">{{ link.title }}</a>
+            {%- endfor -%}
+          {%- endfor -%}
+        </nav>
+      </div>
+      <!-- Left Panel: MEN Links -->
+      <div class="menu-drawer-left menu-gender-panel" data-gender="MEN" style="display:none;">
+        <nav class="menu-drawer-nav">
+          {%- for link in linklists[section.settings.menu_men].links -%}
+            <a href="{{ link.url }}" class="menu-nav-link">{{ link.title }}</a>
+          {%- endfor -%}
+        </nav>
+      </div>
+      <!-- Left Panel: JUNIORS Links -->
+      <div class="menu-drawer-left menu-gender-panel" data-gender="JUNIORS" style="display:none;">
+        <nav class="menu-drawer-nav">
+          {%- for link in linklists[section.settings.menu_juniors].links -%}
+            <a href="{{ link.url }}" class="menu-nav-link">{{ link.title }}</a>
+          {%- endfor -%}
+        </nav>
+      </div>
+      <!-- Right Panel: Visual campaign promotion card -->
+      <div class="menu-drawer-right">
+        <div class="menu-drawer-promo">
+          <img src="{{ 'ivory_linen_dress.png' | asset_url }}" class="menu-promo-img" alt="Seasonal campaign">
+          <div class="menu-promo-content">
+            <span class="menu-promo-tag">NEW COLLECTION</span>
+            <h4>MIDSUMMER CAPSULE</h4>
+            <a href="#" class="menu-promo-btn">Shop Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header & Announcements",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation Menu (Fallback)",
+      "default": "main-menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_women",
+      "label": "Women Navigation Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_men",
+      "label": "Men Navigation Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_juniors",
+      "label": "Juniors Navigation Menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Enable Sticky Header",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "transparent_header",
+      "label": "Transparent Header on Homepage",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Announcement Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show Announcement",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement Text",
+      "default": "Complimentary worldwide shipping on orders over $250"
+    }
+  ]
+}
+{% endschema %}
+

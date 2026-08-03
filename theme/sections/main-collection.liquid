@@ -1,0 +1,110 @@
+{%- paginate collection.products by section.settings.products_per_page -%}
+<div id="collection-view">
+  <!-- Breadcrumb -->
+  <div class="collection-breadcrumb">
+    <a href="/">HOME</a> /
+    <span>{{ collection.title }}</span>
+  </div>
+
+  <!-- Sub-category filter tabs (scrollable pills) -->
+  <div class="collection-filter-bar">
+    <div class="filter-tabs-scroll">
+      <div class="filter-tabs" id="filter-tabs-row">
+        <!-- Render parent links or relative collections if applicable -->
+        <a href="/collections/all" class="filter-tab {% if collection.handle == 'all' %}active{% endif %}">ALL</a>
+        {%- for coll in collections -%}
+          {%- unless coll.handle == 'all' or coll.handle == 'frontpage' -%}
+            <a href="{{ coll.url }}" class="filter-tab {% if collection.handle == coll.handle %}active{% endif %}">{{ coll.title | uppercase }}</a>
+          {%- endunless -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    <div class="filter-bar-right">
+      <span class="product-count-label" id="product-count-label">{{ paginate.items }} Products</span>
+      <div class="grid-layout-toggles">
+        <button class="grid-toggle" data-cols="1" aria-label="1 Column">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="1" width="10" height="14" rx="1"/></svg>
+        </button>
+        <button class="grid-toggle" data-cols="2" aria-label="2 Columns">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="14" rx="1"/><rect x="9" y="1" width="6" height="14" rx="1"/></svg>
+        </button>
+        <button class="grid-toggle active" data-cols="5" aria-label="5 Columns">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="3" height="6" rx="0.5"/><rect x="5" y="1" width="3" height="6" rx="0.5"/><rect x="9" y="1" width="3" height="6" rx="0.5"/><rect x="1" y="9" width="3" height="6" rx="0.5"/><rect x="5" y="9" width="3" height="6" rx="0.5"/><rect x="9" y="9" width="3" height="6" rx="0.5"/></svg>
+        </button>
+        <button class="grid-toggle filter-icon-btn" id="filter-drawer-trigger" aria-label="Filters">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M4 8h8M6 12h4"/></svg>
+          <span class="filter-btn-label">Filters</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Grid (5 columns by default) -->
+  <div class="product-grid cols-5" id="catalog-grid">
+    {%- for product in collection.products -%}
+      {%- render 'product-card', product: product -%}
+    {%- else -%}
+      <div style="grid-column: 1/-1; text-align:center; padding: 60px 0; opacity:0.6;">
+        <p>No products found in this collection.</p>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if paginate.pages > 1 -%}
+    <div class="pagination-row" style="display:flex; justify-content:center; gap:16px; margin-top:60px; margin-bottom:60px; font-size:13px; text-transform:uppercase;">
+      {%- if paginate.previous -%}
+        <a href="{{ paginate.previous.url }}" style="color:var(--text-color); text-decoration:none;">&laquo; Previous</a>
+      {%- endif -%}
+      
+      <span style="opacity:0.6;">Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
+      
+      {%- if paginate.next -%}
+        <a href="{{ paginate.next.url }}" style="color:var(--text-color); text-decoration:none;">Next &raquo;</a>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
+
+<!-- Filter Drawer Overlay for Collection Page -->
+<div class="filter-drawer-overlay" id="filter-drawer-overlay">
+  <div class="filter-drawer">
+    <div class="filter-drawer-header">
+      <h3>Filters</h3>
+      <button class="filter-drawer-close" id="filter-drawer-close">&times;</button>
+    </div>
+    <div class="filter-drawer-body">
+      <div class="filter-group">
+        <div class="filter-group-title">Sort By</div>
+        <div class="filter-options">
+          <a href="{{ request.path }}?sort_by=manual" class="filter-radio-link {% if collection.sort_by == 'manual' %}active{% endif %}">Featured</a>
+          <a href="{{ request.path }}?sort_by=price-ascending" class="filter-radio-link {% if collection.sort_by == 'price-ascending' %}active{% endif %}">Price: Low to High</a>
+          <a href="{{ request.path }}?sort_by=price-descending" class="filter-radio-link {% if collection.sort_by == 'price-descending' %}active{% endif %}">Price: High to Low</a>
+          <a href="{{ request.path }}?sort_by=created-descending" class="filter-radio-link {% if collection.sort_by == 'created-descending' %}active{% endif %}">Newest</a>
+        </div>
+      </div>
+    </div>
+    <div class="filter-drawer-footer">
+      <button class="filter-apply-btn" id="filter-apply-btn">Apply Filters</button>
+      <a href="{{ collection.url }}" class="filter-clear-btn" style="display:block; text-align:center; text-decoration:none; line-height:2.8;">Clear All</a>
+    </div>
+  </div>
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Main Collection Grid",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per Page",
+      "min": 4,
+      "max": 24,
+      "step": 4,
+      "default": 12
+    }
+  ]
+}
+{% endschema %}
+

@@ -60,38 +60,61 @@
   </head>
 
   <body>
-    <!-- Premium 3D Preloader Screen -->
+    <!-- Premium Editorial Preloader Screen -->
     <div class="preloader-overlay" id="preloader-overlay">
-      <div class="preloader-background-glow"></div>
+      <div class="preloader-background-vignette"></div>
+      <div class="preloader-grid-lines"></div>
 
-      <!-- Center 3D Logo Scene -->
+      <!-- Architectural Corner Header Info -->
+      <div class="preloader-corner preloader-top-left">
+        <div class="preloader-status-indicator">
+          <span class="preloader-status-dot"></span>
+          <span class="preloader-meta-label">RELIST ARCHIVE ®</span>
+        </div>
+        <span class="preloader-meta-sub">AUTUMN / WINTER 2026</span>
+      </div>
+
+      <div class="preloader-corner preloader-top-right">
+        <span class="preloader-meta-label">EST. 2026</span>
+        <span class="preloader-meta-sub">TOKYO • PARIS • NEW YORK</span>
+      </div>
+
+      <!-- Center High-Fashion Typography & Emblem -->
       <div class="preloader-center-content">
-        <div class="logo-3d-scene">
-          <div class="logo-3d-cube">
-            <div class="cube-face cube-front">R</div>
-            <div class="cube-face cube-back">R</div>
-            <div class="cube-face cube-right">L</div>
-            <div class="cube-face cube-left">S</div>
-            <div class="cube-face cube-top"></div>
-            <div class="cube-face cube-bottom"></div>
-          </div>
-          <div class="logo-3d-ring"></div>
-          <div class="logo-3d-shadow"></div>
+        <div class="preloader-emblem-wrapper">
+          <svg class="preloader-emblem-svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" class="emblem-dash-ring" />
+            <path d="M32 10 L32 54 M10 32 L54 32" stroke="currentColor" stroke-width="1" opacity="0.3" />
+            <polygon points="32,18 43,32 32,46 21,32" fill="none" stroke="currentColor" stroke-width="1.5" class="emblem-diamond" />
+            <circle cx="32" cy="32" r="3" fill="currentColor" class="emblem-core" />
+          </svg>
         </div>
-        <div class="preloader-brand-name">
-          <span class="brand-text">RELIST</span>
-          <span class="brand-tagline">LUXURY ARCHIVE & FASHION</span>
+        <div class="preloader-brand-title">
+          <span class="brand-char">R</span>
+          <span class="brand-char">E</span>
+          <span class="brand-char">L</span>
+          <span class="brand-char">I</span>
+          <span class="brand-char">S</span>
+          <span class="brand-char">T</span>
         </div>
+        <p class="preloader-subtitle">EDITORIAL FASHION & LUXURY ARCHIVE</p>
+      </div>
+
+      <!-- Bottom Left Dynamic Ticker -->
+      <div class="preloader-bottom-left">
+        <span class="preloader-ticker-label">[ STATUS ]</span>
+        <span class="preloader-ticker-text" id="preloader-ticker">INITIALIZING HIGH-RES ASSETS...</span>
       </div>
 
       <!-- Bottom Right 1-100 Loading Counter & Line -->
       <div class="preloader-bottom-right">
         <div class="preloader-counter-wrapper">
-          <span class="preloader-counter-number" id="preloader-counter">1</span>
+          <span class="preloader-counter-number" id="preloader-counter">001</span>
           <span class="preloader-counter-symbol">%</span>
         </div>
         <div class="preloader-progress-track">
           <div class="preloader-progress-bar" id="preloader-progress-bar"></div>
+          <div class="preloader-progress-glow-dot" id="preloader-glow-dot"></div>
         </div>
       </div>
     </div>

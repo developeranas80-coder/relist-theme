@@ -142,12 +142,14 @@ function initPromoPopup() {
 }
 
 /* ============================================================
-   PRELOADER ANIMATION LOGIC (1% -> 100%)
+   EDITORIAL PRELOADER ANIMATION LOGIC (001% -> 100%)
    ============================================================ */
 function initPreloader() {
   const overlay = document.getElementById('preloader-overlay');
   const counterEl = document.getElementById('preloader-counter');
   const progressBarEl = document.getElementById('preloader-progress-bar');
+  const glowDotEl = document.getElementById('preloader-glow-dot');
+  const tickerEl = document.getElementById('preloader-ticker');
   if (!overlay || !counterEl || !progressBarEl) return;
 
   // Lock scroll during preloader
@@ -158,6 +160,14 @@ function initPreloader() {
   const duration = 2200; // 2.2s total smooth animation duration
   const startTime = performance.now();
 
+  const tickerMessages = [
+    { threshold: 1, text: 'INITIALIZING HIGH-RES ASSETS...' },
+    { threshold: 25, text: 'LOADING CATALOG ARCHIVE...' },
+    { threshold: 55, text: 'CALCULATING TYPOGRAPHY & LAYOUT...' },
+    { threshold: 85, text: 'PREPARING STOREFRONT EXPERIENCE...' },
+    { threshold: 100, text: 'WELCOME TO RELIST ARCHIVE' }
+  ];
+
   function updateCounter(currentTime) {
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
@@ -166,14 +176,24 @@ function initPreloader() {
     const easeProgress = 1 - Math.pow(1 - progress, 3);
     count = Math.floor(easeProgress * 99) + 1;
 
-    counterEl.textContent = count;
+    // Pad counter to 3 digits (e.g. 001, 042, 100)
+    counterEl.textContent = String(count).padStart(3, '0');
     progressBarEl.style.width = `${count}%`;
+    if (glowDotEl) glowDotEl.style.left = `${count}%`;
+
+    // Update ticker text based on progress threshold
+    if (tickerEl) {
+      const msg = tickerMessages.slice().reverse().find(m => count >= m.threshold);
+      if (msg) tickerEl.textContent = msg.text;
+    }
 
     if (progress < 1) {
       requestAnimationFrame(updateCounter);
     } else {
       counterEl.textContent = '100';
       progressBarEl.style.width = '100%';
+      if (glowDotEl) glowDotEl.style.left = '100%';
+      if (tickerEl) tickerEl.textContent = 'WELCOME TO RELIST ARCHIVE';
 
       // Pause briefly at 100% then animate curtain exit
       setTimeout(() => {

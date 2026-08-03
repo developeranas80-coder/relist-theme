@@ -929,6 +929,7 @@ export function initStorefront(storefrontApp) {
   renderHomepageSliders();
   initSliderArrows();
   initHeroSlider();
+  initPreloader();
 
   return {
     updateProductCardStyle,
@@ -936,3 +937,56 @@ export function initStorefront(storefrontApp) {
     showHomepage
   };
 }
+
+/* ============================================================
+   PRELOADER ANIMATION LOGIC (1% -> 100%)
+   ============================================================ */
+function initPreloader() {
+  const overlay = document.getElementById('preloader-overlay');
+  const counterEl = document.getElementById('preloader-counter');
+  const progressBarEl = document.getElementById('preloader-progress-bar');
+  if (!overlay || !counterEl || !progressBarEl) return;
+
+  document.body.style.overflow = 'hidden';
+
+  let count = 1;
+  const duration = 2200;
+  const startTime = performance.now();
+
+  function updateCounter(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    const easeProgress = 1 - Math.pow(1 - progress, 3);
+    count = Math.floor(easeProgress * 99) + 1;
+
+    counterEl.textContent = count;
+    progressBarEl.style.width = `${count}%`;
+
+    if (progress < 1) {
+      requestAnimationFrame(updateCounter);
+    } else {
+      counterEl.textContent = '100';
+      progressBarEl.style.width = '100%';
+
+      setTimeout(() => {
+        overlay.classList.add('is-loaded');
+        document.body.style.overflow = '';
+
+        setTimeout(() => {
+          overlay.style.display = 'none';
+        }, 900);
+      }, 350);
+    }
+  }
+
+  requestAnimationFrame(updateCounter);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('preloader-overlay') && !window.preloaderInitialized) {
+    window.preloaderInitialized = true;
+    initPreloader();
+  }
+});
+

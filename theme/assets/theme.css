@@ -3397,3 +3397,258 @@ ul {
   .pdp-review-form-actions { flex-direction: column; }
   .pdp-review-card-header { flex-direction: column; align-items: flex-start; }
 }
+
+/* ============================================================
+   PRELOADER — 3D Center Logo & Bottom-Right 1-100% Loader
+   ============================================================ */
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #08080a;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.85s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.65s ease, visibility 0.85s;
+  will-change: transform, opacity;
+}
+
+.preloader-overlay.is-loaded {
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Background Ambient Glow */
+.preloader-background-glow {
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.015) 45%, rgba(0, 0, 0, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+  animation: preloaderPulseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes preloaderPulseGlow {
+  0% { transform: scale(0.85); opacity: 0.4; }
+  100% { transform: scale(1.25); opacity: 0.85; }
+}
+
+/* Center 3D Logo Scene */
+.preloader-center-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo-3d-scene {
+  perspective: 1000px;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.logo-3d-cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateCube3D 8s infinite linear;
+}
+
+.cube-face {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.06), 0 10px 30px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 2.8rem;
+  color: #ffffff;
+  letter-spacing: -0.05em;
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+}
+
+.cube-front  { transform: rotateY(  0deg) translateZ(70px); }
+.cube-back   { transform: rotateY(180deg) translateZ(70px); }
+.cube-right  { transform: rotateY( 90deg) translateZ(70px); }
+.cube-left   { transform: rotateY(-90deg) translateZ(70px); }
+.cube-top    { transform: rotateX( 90deg) translateZ(70px); background: rgba(255, 255, 255, 0.09); }
+.cube-bottom { transform: rotateX(-90deg) translateZ(70px); background: rgba(0, 0, 0, 0.5); }
+
+.logo-3d-ring {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  width: 172px;
+  height: 172px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spinRing 3.5s linear infinite;
+  pointer-events: none;
+}
+
+.logo-3d-shadow {
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 14px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  filter: blur(5px);
+  animation: shadowPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes rotateCube3D {
+  0% { transform: rotateX(-16deg) rotateY(0deg); }
+  100% { transform: rotateX(-16deg) rotateY(360deg); }
+}
+
+@keyframes spinRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes shadowPulse {
+  0% { transform: translateX(-50%) scale(0.8); opacity: 0.4; }
+  100% { transform: translateX(-50%) scale(1.15); opacity: 0.9; }
+}
+
+.preloader-brand-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.preloader-brand-name .brand-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: 0.38em;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-indent: 0.38em;
+}
+
+.preloader-brand-name .brand-tagline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+}
+
+/* Bottom Right Counter & Progress Line */
+.preloader-bottom-right {
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.preloader-counter-wrapper {
+  display: flex;
+  align-items: baseline;
+  line-height: 0.9;
+}
+
+.preloader-counter-number {
+  font-family: 'Syne', 'Space Grotesk', sans-serif;
+  font-size: clamp(4.5rem, 8vw, 8.5rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+  background: linear-gradient(180deg, #ffffff 40%, rgba(255, 255, 255, 0.3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.preloader-counter-symbol {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.65);
+  margin-left: 4px;
+}
+
+/* Loader Line under counter */
+.preloader-progress-track {
+  width: 280px;
+  max-width: 80vw;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.preloader-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.5) 0%, #ffffff 70%, #ffffff 100%);
+  border-radius: 999px;
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.9);
+  transition: width 0.05s linear;
+}
+
+@media (max-width: 768px) {
+  .preloader-bottom-right {
+    bottom: 30px;
+    right: 24px;
+  }
+  .preloader-progress-track {
+    width: 200px;
+  }
+  .logo-3d-scene {
+    width: 110px;
+    height: 110px;
+  }
+  .cube-face {
+    width: 110px;
+    height: 110px;
+    font-size: 2.2rem;
+  }
+  .cube-front  { transform: rotateY(  0deg) translateZ(55px); }
+  .cube-back   { transform: rotateY(180deg) translateZ(55px); }
+  .cube-right  { transform: rotateY( 90deg) translateZ(55px); }
+  .cube-left   { transform: rotateY(-90deg) translateZ(55px); }
+  .cube-top    { transform: rotateX( 90deg) translateZ(55px); }
+  .cube-bottom { transform: rotateX(-90deg) translateZ(55px); }
+  .logo-3d-ring {
+    width: 136px;
+    height: 136px;
+    top: -13px;
+    left: -13px;
+  }
+}

@@ -22,7 +22,8 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 document.addEventListener('DOMContentLoaded', () => {
-  const storefrontApp = document.getElementById('storefront-app');
+  // 0. Initialize 3D Preloader Screen (1% - 100%)
+  initPreloader();
 
   // 1. Initialize Storefront
   const storefront = initStorefront(storefrontApp);
@@ -139,3 +140,64 @@ function initPromoPopup() {
     });
   }
 }
+
+/* ============================================================
+   PRELOADER ANIMATION LOGIC (1% -> 100%)
+   ============================================================ */
+function initPreloader() {
+  const overlay = document.getElementById('preloader-overlay');
+  const counterEl = document.getElementById('preloader-counter');
+  const progressBarEl = document.getElementById('preloader-progress-bar');
+  if (!overlay || !counterEl || !progressBarEl) return;
+
+  // Lock scroll during preloader
+  document.body.style.overflow = 'hidden';
+  if (window.lenis) window.lenis.stop();
+
+  let count = 1;
+  const duration = 2200; // 2.2s total smooth animation duration
+  const startTime = performance.now();
+
+  function updateCounter(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    // Ease-out cubic for realistic deceleration as it approaches 100%
+    const easeProgress = 1 - Math.pow(1 - progress, 3);
+    count = Math.floor(easeProgress * 99) + 1;
+
+    counterEl.textContent = count;
+    progressBarEl.style.width = `${count}%`;
+
+    if (progress < 1) {
+      requestAnimationFrame(updateCounter);
+    } else {
+      counterEl.textContent = '100';
+      progressBarEl.style.width = '100%';
+
+      // Pause briefly at 100% then animate curtain exit
+      setTimeout(() => {
+        overlay.classList.add('is-loaded');
+        document.body.style.overflow = '';
+        if (window.lenis) window.lenis.start();
+
+        // Cleanup element after exit animation completes
+        setTimeout(() => {
+          overlay.style.display = 'none';
+        }, 900);
+      }, 350);
+    }
+  }
+
+  requestAnimationFrame(updateCounter);
+}
+
+// Expose replay helper on window for customizer / testing
+window.replayPreloader = function() {
+  const overlay = document.getElementById('preloader-overlay');
+  if (!overlay) return;
+  overlay.style.display = 'flex';
+  overlay.classList.remove('is-loaded');
+  initPreloader();
+};
+

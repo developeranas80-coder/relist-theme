@@ -29,7 +29,7 @@
     {{ content_for_header }}
 
     <!-- Fonts Load (Aesthetic Serif and Modern Sans) -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
     <!-- CSS Variable Mapping from Shopify Settings -->
     <style>
@@ -60,6 +60,42 @@
   </head>
 
   <body>
+    <!-- Premium 3D Preloader Screen -->
+    <div class="preloader-overlay" id="preloader-overlay">
+      <div class="preloader-background-glow"></div>
+
+      <!-- Center 3D Logo Scene -->
+      <div class="preloader-center-content">
+        <div class="logo-3d-scene">
+          <div class="logo-3d-cube">
+            <div class="cube-face cube-front">R</div>
+            <div class="cube-face cube-back">R</div>
+            <div class="cube-face cube-right">L</div>
+            <div class="cube-face cube-left">S</div>
+            <div class="cube-face cube-top"></div>
+            <div class="cube-face cube-bottom"></div>
+          </div>
+          <div class="logo-3d-ring"></div>
+          <div class="logo-3d-shadow"></div>
+        </div>
+        <div class="preloader-brand-name">
+          <span class="brand-text">RELIST</span>
+          <span class="brand-tagline">LUXURY ARCHIVE & FASHION</span>
+        </div>
+      </div>
+
+      <!-- Bottom Right 1-100 Loading Counter & Line -->
+      <div class="preloader-bottom-right">
+        <div class="preloader-counter-wrapper">
+          <span class="preloader-counter-number" id="preloader-counter">1</span>
+          <span class="preloader-counter-symbol">%</span>
+        </div>
+        <div class="preloader-progress-track">
+          <div class="preloader-progress-bar" id="preloader-progress-bar"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- Cart Drawer Snippet -->
     {% render 'cart-drawer' %}
 

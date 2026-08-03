@@ -299,21 +299,18 @@ export const menuCategories = {
     { label: "Shirts", slug: "shirts" },
     { label: "Dresses", slug: "dresses" },
     { label: "Denim", slug: "denim" },
-    { label: "Skirts & Shorts", slug: "skirts" },
-    { label: "Outlet / Sale", slug: "all" }
+    { label: "Skirts & Shorts", slug: "skirts" }
   ],
   MEN: [
     { label: "New In", slug: "all" },
     { label: "T-Shirts", slug: "t-shirts" },
     { label: "Shirts", slug: "shirts" },
-    { label: "Denim", slug: "denim" },
-    { label: "Outlet / Sale", slug: "all" }
+    { label: "Denim", slug: "denim" }
   ],
   JUNIORS: [
     { label: "New In", slug: "all" },
     { label: "T-Shirts", slug: "t-shirts" },
-    { label: "Shirts", slug: "shirts" },
-    { label: "Outlet / Sale", slug: "all" }
+    { label: "Shirts", slug: "shirts" }
   ]
 };
 

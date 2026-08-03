@@ -22,6 +22,8 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 document.addEventListener('DOMContentLoaded', () => {
+  const storefrontApp = document.getElementById('storefront-app');
+
   // 0. Initialize 3D Preloader Screen (1% - 100%)
   initPreloader();
 
@@ -29,7 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const storefront = initStorefront(storefrontApp);
 
   // 2. Initialize Customizer (pass card update function)
-  initCustomizer(storefrontApp, storefront.updateProductCardStyle);
+  if (storefrontApp && storefront) {
+    initCustomizer(storefrontApp, storefront.updateProductCardStyle);
+  }
 
   // 3. Download Theme Code popup
   const exportBtn = document.getElementById('export-theme-btn');

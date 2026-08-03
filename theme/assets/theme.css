@@ -153,8 +153,7 @@ ul {
 }
 
 .hamburger-trigger {
-  display: flex;
-  align-items: center;
+  display: none !important;
 }
 
 /* Centered Logo — Relist Premium Geometric Typography */

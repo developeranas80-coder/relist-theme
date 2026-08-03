@@ -172,9 +172,9 @@ export function initStorefront(storefrontApp) {
   }
 
   /* ============================================================
-     NAV LINKS — Go to Collection View
+     NAV LINKS (NON-MEGAMENU) — Go to Collection View
      ============================================================ */
-  document.querySelectorAll('.nav-link-top').forEach(link => {
+  document.querySelectorAll('.store-nav-links .nav-item:not(.nav-item-has-megamenu) .nav-link-top').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       showCollection(link.dataset.link || 'all');
@@ -1649,6 +1649,8 @@ export function initStorefront(storefrontApp) {
       item.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
+
+        // If clicking top link when mega menu is already active for this item, close it; otherwise open it
         if (megaOverlay.classList.contains('is-active') && activeTarget === targetId) {
           closeMegaMenu();
         } else {

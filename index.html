@@ -225,11 +225,6 @@
     <!-- ===== HEADER (Relist exact layout with Mega Menu) ===== -->
     <header class="store-header transparent" id="store-header-element">
       <div class="header-left-group">
-        <button class="header-icon hamburger-trigger" id="menu-drawer-trigger-btn" aria-label="Menu">
-          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <path d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
         <nav class="store-nav-links" id="store-main-nav">
           <div class="nav-item-has-megamenu" data-megamenu="women">
             <a href="#" class="nav-link-top active" data-link="all" data-gender="WOMEN">WOMEN</a>
@@ -245,9 +240,6 @@
           </div>
           <div class="nav-item">
             <a href="#" class="nav-link-top" data-link="dresses">EDITORIAL</a>
-          </div>
-          <div class="nav-item-has-megamenu" data-megamenu="sale">
-            <a href="#" class="nav-link-top nav-link-sale" data-link="all">SALE</a>
           </div>
         </nav>
       </div>
@@ -285,7 +277,10 @@
 
     <!-- ===== MEGA MENU DROPDOWN PANEL ===== -->
     <div class="mega-menu-overlay" id="mega-menu-overlay">
-      <button class="mega-menu-close-btn" id="mega-menu-close-btn" aria-label="Close Mega Menu">&times;</button>
+      <div class="mega-menu-bar">
+        <span class="mega-menu-bar-label">[ RELIST ARCHIVE ® • AUTUMN / WINTER 2026 EDITION ]</span>
+        <button class="mega-menu-close-btn" id="mega-menu-close-btn" aria-label="Close Mega Menu"><span>CLOSE</span> &times;</button>
+      </div>
       <div class="mega-menu-inner">
         
         <!-- PANEL 1: WOMEN -->
@@ -430,30 +425,7 @@
           </div>
         </div>
 
-        <!-- PANEL 5: SALE -->
-        <div class="mega-menu-panel" id="megamenu-panel-sale">
-          <div class="mega-menu-grid">
-            <div class="mega-col">
-              <h4 class="mega-col-title" style="color: #e63946;">SALE ARCHIVE</h4>
-              <ul class="mega-col-list">
-                <li><a href="#" data-link="all" class="mega-link highlight" style="color: #e63946;">Shop All Sale — Up to 40% Off</a></li>
-                <li><a href="#" data-link="t-shirts" class="mega-link">T-Shirts on Sale</a></li>
-                <li><a href="#" data-link="dresses" class="mega-link">Dresses on Sale</a></li>
-                <li><a href="#" data-link="denim" class="mega-link">Outerwear Deals</a></li>
-              </ul>
-            </div>
-            <div class="mega-col mega-col-promos" style="grid-column: span 3;">
-              <div class="mega-promo-card" data-link="all">
-                <img src="/images/black_silk_dress.png" alt="Sale" class="mega-promo-img">
-                <div class="mega-promo-overlay">
-                  <span class="mega-promo-tag" style="background:#e63946; color:#fff; padding: 2px 6px; width: fit-content;">SPECIAL OFFER</span>
-                  <h5 class="mega-promo-title">End of Season Clearance</h5>
-                  <span class="mega-promo-cta">Shop Sale Now &rarr;</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
 
       </div>
     </div>

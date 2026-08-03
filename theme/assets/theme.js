@@ -1006,5 +1006,85 @@ document.addEventListener('DOMContentLoaded', () => {
     window.preloaderInitialized = true;
     initPreloader();
   }
+
+  // Initialize Mega Menu
+  const navItems = document.querySelectorAll('.nav-item-has-megamenu');
+  const megaOverlay = document.getElementById('mega-menu-overlay');
+  const megaPanels = document.querySelectorAll('.mega-menu-panel');
+  const closeBtn = document.getElementById('mega-menu-close-btn');
+  const storeHeader = document.getElementById('store-header-element');
+  if (megaOverlay && navItems.length > 0) {
+    let activeTarget = null;
+    let closeTimer = null;
+
+    function openMegaPanel(targetId) {
+      if (closeTimer) clearTimeout(closeTimer);
+      activeTarget = targetId;
+
+      megaPanels.forEach(panel => {
+        if (panel.id === `megamenu-panel-${targetId}`) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+
+      megaOverlay.classList.add('is-active');
+      if (storeHeader) storeHeader.classList.add('megamenu-open');
+    }
+
+    function closeMegaMenu() {
+      megaOverlay.classList.remove('is-active');
+      if (storeHeader) storeHeader.classList.remove('megamenu-open');
+      activeTarget = null;
+    }
+
+    function scheduleClose() {
+      closeTimer = setTimeout(() => {
+        closeMegaMenu();
+      }, 200);
+    }
+
+    navItems.forEach(item => {
+      const targetId = item.dataset.megamenu;
+
+      item.addEventListener('mouseenter', () => openMegaPanel(targetId));
+      item.addEventListener('mouseleave', () => scheduleClose());
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (megaOverlay.classList.contains('is-active') && activeTarget === targetId) {
+          closeMegaMenu();
+        } else {
+          openMegaPanel(targetId);
+        }
+      });
+    });
+
+    megaOverlay.addEventListener('mouseenter', () => {
+      if (closeTimer) clearTimeout(closeTimer);
+    });
+
+    megaOverlay.addEventListener('mouseleave', () => scheduleClose());
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeMegaMenu();
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      if (megaOverlay.classList.contains('is-active')) {
+        if (!megaOverlay.contains(e.target) && !e.target.closest('.nav-item-has-megamenu')) {
+          closeMegaMenu();
+        }
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMegaMenu();
+    });
+  }
 });
 

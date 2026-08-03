@@ -1586,18 +1586,21 @@ export function initStorefront(storefrontApp) {
   }
 
   /* ============================================================
-     MEGA MENU CONTROLLER — Hover & Click Navigation
+     MEGA MENU CONTROLLER — Hover, Click, & Touch Support
      ============================================================ */
   function initMegaMenu() {
     const navItems = document.querySelectorAll('.nav-item-has-megamenu');
     const megaOverlay = document.getElementById('mega-menu-overlay');
     const megaPanels = document.querySelectorAll('.mega-menu-panel');
+    const closeBtn = document.getElementById('mega-menu-close-btn');
     if (!megaOverlay || navItems.length === 0) return;
 
+    let activeTarget = null;
     let closeTimer = null;
 
     function openMegaPanel(targetId) {
       if (closeTimer) clearTimeout(closeTimer);
+      activeTarget = targetId;
 
       megaPanels.forEach(panel => {
         if (panel.id === `megamenu-panel-${targetId}`) {
@@ -1607,15 +1610,29 @@ export function initStorefront(storefrontApp) {
         }
       });
 
+      navItems.forEach(item => {
+        const link = item.querySelector('.nav-link-top');
+        if (item.dataset.megamenu === targetId) {
+          if (link) link.classList.add('active');
+        } else {
+          if (link) link.classList.remove('active');
+        }
+      });
+
       megaOverlay.classList.add('is-active');
       storeHeader.classList.add('megamenu-open');
     }
 
     function closeMegaMenu() {
+      megaOverlay.classList.remove('is-active');
+      storeHeader.classList.remove('megamenu-open');
+      activeTarget = null;
+    }
+
+    function scheduleClose() {
       closeTimer = setTimeout(() => {
-        megaOverlay.classList.remove('is-active');
-        storeHeader.classList.remove('megamenu-open');
-      }, 150);
+        closeMegaMenu();
+      }, 200);
     }
 
     navItems.forEach(item => {
@@ -1626,7 +1643,17 @@ export function initStorefront(storefrontApp) {
       });
 
       item.addEventListener('mouseleave', () => {
-        closeMegaMenu();
+        scheduleClose();
+      });
+
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (megaOverlay.classList.contains('is-active') && activeTarget === targetId) {
+          closeMegaMenu();
+        } else {
+          openMegaPanel(targetId);
+        }
       });
     });
 
@@ -1635,26 +1662,38 @@ export function initStorefront(storefrontApp) {
     });
 
     megaOverlay.addEventListener('mouseleave', () => {
-      closeMegaMenu();
+      scheduleClose();
     });
 
-    // Handle all links inside mega menu
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeMegaMenu();
+      });
+    }
+
     const megaLinks = megaOverlay.querySelectorAll('a[data-link], .mega-promo-card[data-link]');
     megaLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
+        e.stopPropagation();
         const slug = link.dataset.link;
-        megaOverlay.classList.remove('is-active');
-        storeHeader.classList.remove('megamenu-open');
+        closeMegaMenu();
         showCollection(slug);
       });
     });
 
-    // Close on Escape key
+    document.addEventListener('click', (e) => {
+      if (megaOverlay.classList.contains('is-active')) {
+        if (!megaOverlay.contains(e.target) && !e.target.closest('.nav-item-has-megamenu')) {
+          closeMegaMenu();
+        }
+      }
+    });
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        megaOverlay.classList.remove('is-active');
-        storeHeader.classList.remove('megamenu-open');
+        closeMegaMenu();
       }
     });
   }
